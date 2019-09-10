@@ -1,0 +1,15 @@
+{
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "apility/netflex-sdk": "^1.1",
+    "apility/opengraph": "^1.0",
+    "larapack/dd": "^1.1",
+    "nesbot/carbon": "^2.24"
+  },
+  "autoload": {
+    "psr-4": {
+      "Helpers\\": "helpers/"
+    }
+  }
+}

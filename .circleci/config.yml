@@ -1,0 +1,71 @@
+version: 2.1
+
+orbs:
+  netflex: netflex/netflex-deploy@2.0.7
+
+jobs:
+  checkout:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - netflex/pull
+
+  composer:
+    docker:
+      - image: circleci/php:latest
+    steps:
+      - netflex/composer
+
+  build:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - run:
+          name: "Set build env variable(s)"
+          command: echo 'export NODE_ENV="production"' >> $BASH_ENV
+      - netflex/build
+
+  deploy:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - netflex/deploy
+
+  deploy_prod:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - netflex/deploy_prod
+
+workflows:
+  version: 2
+  deployment:
+    jobs:
+      - checkout:
+          filters:
+            branches:
+              only:
+                - dev
+                - master
+      - composer:
+          requires:
+            - checkout
+      - build:
+          requires:
+            - checkout
+      - deploy:
+          requires:
+            - build
+            - composer
+          filters:
+            branches:
+              only:
+                - dev
+      - deploy_prod:
+          requires:
+            - build
+            - composer
+          filters:
+            branches:
+              only:
+                - master

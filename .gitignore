@@ -1,0 +1,23 @@
+### Composer ###
+/vendor
+
+### NPM ###
+/node_modules
+npm-debug.log
+yarn-error.log
+
+### Compiled assets ###
+/public/assets/js/*
+/public/assets/css/*
+
+### Netflex ###
+/storage/
+/config/api.json
+/config/watch.json
+/config/deploy.json
+
+### Misc ###
+.env
+.idea
+.vscode
+.DS_Store

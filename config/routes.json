@@ -1,0 +1,3 @@
+{
+  "api/v1/ping/": "pages/api/ping.php"
+}

@@ -1,0 +1,76 @@
+@import "_variables.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+
+.navbar-brand img {
+  height: auto;
+  width: 4rem;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  background-color: $dark-gray;
+  width: 100vw;
+  color: $white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: $lime;
+  transition: all ease-in-out 0.25s;
+
+  &:hover {
+    color: $lime;
+  }
+}
+
+.nav-link {
+  color: $lime!important;
+  font-size: 1.125rem;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.apility-logo {
+  height: auto;
+  width: 12rem;
+}
+
+.bg-dark {
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.jumbotron {
+  color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-link.active {
+  color: $lime!important;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.page-link {
+  color: $lime!important;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.125);
+  }
+}
+
+.btn-dark {
+  color: $lime!important;
+  border-color: rgba(0, 0, 0, 0.125);
+  background-color: #1d2124!important
+}
