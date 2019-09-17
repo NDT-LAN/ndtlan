@@ -1,3 +1,14 @@
 {
-  "api/v1/ping/": "pages/api/ping.php"
+  "api/v1/ping/": "pages/api/ping.php",
+  "api/v1/seatmap.json/": "pages/api/seatmap.php",
+  "api/v1/tickets/": "pages/api/tickets.php",
+  "api/v1/order/": "pages/api/order.php",
+  "api/v1/checkout/": "pages/api/checkout.php",
+  "api/v1/reserve/": "pages/api/reserve_seat.php",
+  "api/v1/reservation_delete/": "pages/api/delete_reservation.php",
+  "api/v1/discount/": "pages/api/add_discount.php",
+  "api/v1/qrcode/": "pages/api/qrcode.php",
+  "logout/": "pages/logout.php",
+  "profil/billetter/": "pages/profile/tickets.php",
+  "profil/": "pages/profile/index.php"
 }

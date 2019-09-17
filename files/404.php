@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <? get_block('head') ?>
 <? global $page; ?>
 <body class="d-flex flex-column">

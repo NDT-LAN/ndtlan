@@ -38,7 +38,7 @@ class Nav {
       $children = $navData['parents'][$parent_id];
       foreach ($children as $child) {
         $item = $navData['items'][$child];
-        if ($item['visible_nav']) {
+        if ($item['public'] && $item['visible_nav']) {
           $active = $found_url === $item['url'];
           switch ($item['template']) {
             case 'f':
@@ -50,6 +50,19 @@ class Nav {
               $output .= $this->buildFolder($item['id'], 1);
               $output .= '</div>';
               $output .= '</li>';
+              break;
+            case 'e':
+              $output .= '<li class="nav-item">';
+              $output .= '<a class="nav-link" target="_blank" href="' . $item['url'] . '">' . $item['name'] . '</a>';
+              break;
+            case 'i':
+              $pageItem = get_page($item['url']);
+              if ($pageItem) {
+                $output .= '<li class="nav-item">';
+                $url = $pageItem ? ('/' . $pageItem['url']) : '#';
+                $output .= '<a class="nav-link" href="' . $url . '">' . $item['name'] . '</a>';
+                $output .= '</li>';
+              }
               break;
             default:
               $output .= '<li class="nav-item ' . ($active ? 'active' : '')  . '">';

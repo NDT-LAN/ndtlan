@@ -55,7 +55,7 @@ a {
   background-size: cover;
 }
 
-.nav-link.active {
+.nav-item.active {
   color: $lime!important;
   font-weight: bold;
   text-decoration: underline;
@@ -73,4 +73,134 @@ a {
   color: $lime!important;
   border-color: rgba(0, 0, 0, 0.125);
   background-color: #1d2124!important
+}
+
+.ndt-seat {
+  margin: 0.25rem;
+  font-size: 0.5rem;
+
+  &--myseat {
+    pointer-events: initial;
+    background: $seat-myseat;
+  }
+
+  &--myreservation {
+    pointer-events: initial;
+    background: $seat-myreservation;
+  }
+
+  &--seat {
+    pointer-events: initial;
+    background: $seat-seat;
+  }
+
+  &--taken {
+    pointer-events: initial;
+    background: $seat-taken;
+  }
+
+  &--kiosk {
+    background: $seat-kiosk;
+  }
+
+  &--scene {
+    background: $seat-scene;
+    color: $white;
+  }
+
+  &--activity {
+    background: $seat-activity;
+  }
+
+  &--entrance {
+    background: $seat-entrance;
+  }
+
+  &--info {
+    background: $seat-info;
+  }
+}
+
+.ndt-seating-container {
+  overflow-x: scroll;
+}
+
+.ndt-seating-row {
+  flex-wrap: nowrap;
+  min-height: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.login-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.nav-pills-secondary .nav-link.active {
+  background: $lime;
+  color: $black!important;
+}
+
+.cursor {
+  cursor: pointer!important;
+}
+
+.ticket--selected {
+  text-shadow: 1px 0 0 currentColor;
+}
+
+.lime {
+  color: $lime!important;
+}
+
+.list-group-cart .list-group-item {
+  background: $dark-gray;
+  color: $white;
+}
+
+.border-radius-top-none {
+  border-top-left-radius: 0!important;
+  border-top-right-radius: 0!important;
+}
+
+.border-radius-bottom-none {
+  border-bottom-left-radius: 0!important;
+  border-bottom-right-radius: 0!important;
+}
+
+.tooltip-inner {
+  white-space:pre-wrap;
 }

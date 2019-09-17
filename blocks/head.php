@@ -11,6 +11,7 @@
   <?= get_codeinject_head() ?>
 
   <link rel="stylesheet" href="<?= get_asset('css/main.css') ?>">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script>
     var $buoop = {

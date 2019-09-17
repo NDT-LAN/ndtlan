@@ -1,5 +1,6 @@
+<? get_block('auth') ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <? get_block('head') ?>
 <body <?= get_body_class() ?>>
   <? get_block('navbar') ?>
