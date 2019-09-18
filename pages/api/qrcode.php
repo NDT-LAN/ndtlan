@@ -28,7 +28,7 @@ $code = $validOrder ? $signup->code : 'https://www.youtube.com/watch?v=dQw4w9WgX
 
 $qrimage = $qrcode
   ->format('png')
-  ->color(30, 42, 67)
+  ->color(0, 0, 0)
   ->size(360)
   ->errorCorrection('H')
   ->generate($code);

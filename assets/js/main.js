@@ -8,8 +8,29 @@ import startCountdown from './countdown'
 
 window.startCountdown = startCountdown
 
+window.$ = $
+window.jQuery = $
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
+
+  const date = new Date()
+  date.setFullYear(date.getFullYear() - 13)
+  date.setMonth(0)
+  date.setDate(1)
+
+  $('.datepicker').datepicker({
+    isRTL: false,
+    format: 'dd.mm.yyyy',
+    autoclose: true,
+    language: 'no',
+    orientation: 'bottom left',
+    defaultViewDate: {
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate()
+    }
+  })
 })
 
 window.initShop = el => {
@@ -280,6 +301,8 @@ window.initShop = el => {
         },
 
         async checkoutStripe () {
+          const root = new URL(window.location.href).origin
+
           const response = await window.fetch(`/api/v1/checkout`, {
             method: 'POST',
             credentials: 'include',
@@ -288,12 +311,13 @@ window.initShop = el => {
             },
             body: JSON.stringify({
               ...this.checkout,
-              callback: window.location.href
+              callback: `${root}/${window._page.url}`
             })
           })
 
           const { data, stripe_public_key: stripePK } = await response.json()
           const stripe = new window.Stripe(stripePK)
+
           stripe.redirectToCheckout({
             sessionId: data.stripe_session_id
           })

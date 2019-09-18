@@ -38,8 +38,6 @@ $facebook_url = trim(get_static_content('footer_content', 'facebook_url', 'text'
     </div>
   </div>
 </footer>
-
-<script src="<?= get_asset('js/main.js') ?>"></script>
 <?= get_codeinject_bodyclose() ?>
 <? global $edit_tools; ?>
 <?= $edit_tools ?? null ?>

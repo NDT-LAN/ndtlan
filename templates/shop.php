@@ -5,8 +5,12 @@ use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Stripe\Checkout\Session;
 use Carbon\Carbon;
+use Apility\OpenGraph\OpenGraph;
 
 global $page;
+
+$og = new OpenGraph();
+$og->addProperty('title', get_meta_title());
 
 NDT::guard($page['url']);
 
@@ -53,13 +57,8 @@ if ($saleAvailable) {
     );
 
     if ($order && isset($order->data->stripe_session_id) && $order->status !== 'c') {
-      $apiKey = 'stripe_live_private_key';
+      Stripe::setApiKey(NDT::getStripeSK());
 
-      if (getenv('ENV') === 'dev') {
-        $apiKey = 'stripe_test_private_key';
-      }
-
-      Stripe::setApiKey(get_setting($apiKey));
       $session = Session::retrieve($order->data->stripe_session_id);
       $payment = PaymentIntent::retrieve($session->payment_intent);
 
@@ -110,13 +109,6 @@ if ($saleAvailable) {
         NF::$capi->put('commerce/orders/' . $order->id, ['json' => [
           'status' => 'c'
         ]]);
-
-        NF::$capi->put('commerce/orders/' . $order->id . '/data', ['json' => [
-          'data_alias' => 'event',
-          'type' => 'text',
-          'label' => 'Arrangement',
-          'value' => $signup->event_id
-        ]]);
       }
 
       $order = json_decode(
@@ -126,7 +118,7 @@ if ($saleAvailable) {
 
       NF::$capi->post('relations/notifications', ['json' => [
         'body' => [
-          'name' => $order->customer_firstname,
+          'name' => $order->checkout->firstname,
           'seat' => $signup->data->Plass,
           'event' => $event->name,
           'order' => $signup->code
@@ -152,7 +144,7 @@ if ($saleAvailable) {
 <? get_block('auth') ?>
 <!DOCTYPE html>
 <html lang="nb">
-<? get_block('head') ?>
+<? get_block('head', ['og' => $og->toMetaTags()]) ?>
 <body <?= get_body_class() ?>>
   <? get_block('navbar') ?>
   <? if ($saleAvailable) { ?>

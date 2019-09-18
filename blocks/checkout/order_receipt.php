@@ -5,6 +5,8 @@ use Helpers\NDT;
 $signup = json_decode(NF::$capi->get('relations/signups/order/' . $order->id)->getBody());
 $signup = array_shift($signup);
 $event = NDT::getEvent($signup->entry_id);
+$qr = $qr ?? $signup->code;
+
 ?>
 <div class="container p-4">
   <? if (isset($title)) { ?>

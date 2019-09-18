@@ -85,7 +85,7 @@
   </form>
   <p v-if="order.user.needs_parental_consent">
     <br>
-    Husk å laste ned og fyll ut foreldre ut <a href="#">Foreldreskriv</a>. Husk å ta dette med deg når du ankommer arrangementet.<br>
+    Husk å laste ned og fyll ut foreldre ut <a href="/foreldreskriv" target="_blank">Foreldreskriv</a>. Husk å ta dette med deg når du ankommer arrangementet.<br>
     Om du ikke gjør dette kan du ikke være i lokalet etter kl. 00.00
   </p>
   <div v-if="!order.discounts.length" class="form-group">

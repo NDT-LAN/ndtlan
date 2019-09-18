@@ -1,3 +1,8 @@
+<?php
+  $pagedata = [
+    'url' => $page ? $page['url'] : null
+  ];
+?>
 <head>
   <meta charset="UTF-8">
   <title><?= trim($title ?? get_meta_title(), ' -') ?></title>
@@ -10,10 +15,18 @@
   <?= $og ?? get_block('opengraph') ?>
   <?= get_codeinject_head() ?>
 
+  <script src="<?= get_asset('js/main.js') ?>"></script>
+
   <link rel="stylesheet" href="<?= get_asset('css/main.css') ?>">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <? if (isset($headContent)) { ?>
+    <?= $headContent ?>
+  <? } ?>
+
   <script>
+    window._page = <?= json_encode($pagedata) ?>
+
     var $buoop = {
       required: { e:0, f:-3, o:-3, s:-1, c:-3 },
       unsupported: true,

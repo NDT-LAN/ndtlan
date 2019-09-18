@@ -56,12 +56,6 @@ class Nav {
               $output .= '<a class="nav-link" target="_blank" href="' . $item['url'] . '">' . $item['name'] . '</a>';
               break;
             case 'i':
-              if ($item['id'] === '10034') {
-                if (!NDT::currentEvent()) {
-                  break;
-                }
-              }
-
               $pageItem = get_page($item['url']);
               if ($pageItem) {
                 $output .= '<li class="nav-item">';

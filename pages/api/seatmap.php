@@ -35,6 +35,7 @@ foreach ($config->map as $y => $row) {
     if ($signup) {
       if ($signup->customer_id == $user->id) {
         $seat->type = $signup->status === 'reservation' ? 'myreservation' : 'myseat';
+        $seat->label .= PHP_EOL . $user->username;
         if ($signup->status === 'reservation') {
           $myreservation = Carbon::parse($signup->expires_at)
             ->timezone('Europe/Oslo')

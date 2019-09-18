@@ -1,6 +1,5 @@
 <?php
   use Apility\OpenGraph\OpenGraph;
-  use Helpers\Form;
 
   $og = new OpenGraph();
   $og->addProperty('title', get_meta_title());
@@ -52,7 +51,6 @@
 <body class="d-flex flex-column">
   <? get_block('navbar') ?>
   <main class="container pt-4 p-3 d-flex flex-column flex-grow-1 justify-content-center">
-    <?= $form ?>
     <?= get_page_blocks('before_articles') ?>
     <? foreach ($articles as $article) { ?>
       <?= get_block('article_card', $article) ?>
