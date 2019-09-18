@@ -104,12 +104,14 @@ window.initShop = el => {
             valid &= !!this.checkout.phone.length
           }
 
-          if (!this.order.user.parent_name) {
-            valid &= !!this.checkout.parent_name.length
-          }
+          if (this.order.user.needs_parental_consent) {
+            if (!this.order.user.parent_name) {
+              valid &= !!this.checkout.parent_name.length
+            }
 
-          if (!this.order.user.parent_phone) {
-            valid &= !!this.checkout.parent_phone.length
+            if (!this.order.user.parent_phone) {
+              valid &= !!this.checkout.parent_phone.length
+            }
           }
 
           if (!this.order.user.birthday) {
@@ -214,12 +216,14 @@ window.initShop = el => {
             checkout.phone = ''
           }
 
-          if (!this.order.user.parent_name) {
-            checkout.parent_name = ''
-          }
+          if (this.order.user.needs_parental_consent) {
+            if (!this.order.user.parent_name) {
+              checkout.parent_name = ''
+            }
 
-          if (!this.order.user.parent_phone) {
-            checkout.parent_phone = ''
+            if (!this.order.user.parent_phone) {
+              checkout.parent_phone = ''
+            }
           }
 
           if (!this.order.user.birthday) {
