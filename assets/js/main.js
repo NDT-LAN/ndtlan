@@ -4,6 +4,10 @@ import $ from 'jquery'
 import Vue from 'vue'
 import dayjs from 'dayjs'
 
+import startCountdown from './countdown'
+
+window.startCountdown = startCountdown
+
 window.initShop = el => {
   const shopEl = document.querySelector(el)
   if (shopEl) {

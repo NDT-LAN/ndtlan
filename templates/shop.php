@@ -10,15 +10,34 @@ global $page;
 
 NDT::guard($page['url']);
 
-$saleAvailable = true;
+$event = NDT::currentEvent();
+$saleAvailable = $event !== null;
 
-if (!NDT::currentEvent()) {
-  $saleAvailable = false;
+$now = Carbon::now();
+$signupStart = Carbon::parse($event->signupStart);
+$saleNotStarted = $signupStart->gt($now);
+$saleAvailable = $saleAvailable && !$saleNotStarted;
+
+$countDownLabel = '';
+
+if ($signupStart) {
+  $countDownTarget = $signupStart;
+  date_default_timezone_set('Europe/Oslo');
+  $delta = strtotime($countDownTarget) - time();
+  $seconds = $delta % 60;
+  $minutes = floor(($delta / 60) % 60);
+  $hours = floor($delta / (60 * 60) % 24);
+  $days = floor($delta / (60 * 60 * 24));
+
+  $seconds = ($seconds < 10 ? '0' : '') . $seconds;
+  $minutes = ($minutes < 10 ? '0' : '') . $minutes;
+  $hours = ($hours < 10 ? '0' : '') . $hours;
+
+  $countDownLabel = ($days ? ($days . ' dager, ') : '') . $hours . ':' . $minutes . ':' . $seconds;
 }
 
 if ($saleAvailable) {
   if (isset($url_asset[1])) {
-    $event = NDT::currentEvent();
     $user = NDT::currentUser();
     $reservationsResponse = NF::$capi->get('relations/signups/entry/' . $event->id . '/status/reservation');
     $reservations = json_decode($reservationsResponse->getBody());
@@ -29,7 +48,6 @@ if ($saleAvailable) {
     );
 
     if ($order && isset($order->data->stripe_session_id) && $order->status !== 'c') {
-      $event = NDT::currentEvent();
       Stripe::setApiKey(get_setting('stripe_private_key'));
       $session = Session::retrieve($order->data->stripe_session_id);
       $payment = PaymentIntent::retrieve($session->payment_intent);
@@ -118,8 +136,6 @@ if ($saleAvailable) {
         ->getBody()
     );
   }
-
-  $event = NDT::currentEvent();
 }
 ?>
 <? get_block('auth') ?>
@@ -169,14 +185,40 @@ if ($saleAvailable) {
       <? get_block('checkout/order_receipt', ['order' => $order]) ?>
     <? } ?>
   <? } else { ?>
-    <div class="container p-4">
-      <div class="jumbotron jumbotron-fluid bg-dark">
+
+
+    <main class="container pt-4 p-3 d-flex flex-column flex-grow-1 justify-content-center">
+      <div class="jumbotron jumbotron-fluid bg-dark text-center">
         <div class="container">
-          <h1 class="display-4">Salget er avsluttet</h1>
-          <p class="lead">Det er ingen arrangementer tilgjengelig</p>
+          <? if ($saleNotStarted) { ?>
+            <h1 class="display-4"><?= $event->name ?></h1>
+            <hr class="my-4">
+            <h2>
+              Salget starter om
+            </h2>
+            <h2
+              id="sale_start_timer"
+              data-target="<?= $event->signupStart ?>"
+              class="display-5"
+              style="font-family: monospace"
+            >
+              <?= $countDownLabel ?>
+            </h2>
+            <? $page['add_to_bodyclose'] .= '<script>startCountdown("#sale_start_timer", function () { window.location.reload(); })</script>' ?>
+          <? } else { ?>
+            <? if ($event) { ?>
+            <h1 class="display-4"><?= $event->name ?></h1>
+            <hr class="my-4">
+            <h2>
+              Salget er avsluttet
+            </h2>
+            <? } else { ?>
+              <h1 class="display-4">Det er ingen tilgjengelige arrangementer.</h1>
+            <? } ?>
+          <? } ?>
         </div>
       </div>
-    </div>
+    </main>
   <? } ?>
   <? get_block('footer') ?>
 </body>
