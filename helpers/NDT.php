@@ -3,6 +3,7 @@
 namespace Helpers;
 
 use NF;
+use Exception;
 use Carbon\Carbon;
 
 class NDT {
@@ -49,14 +50,21 @@ class NDT {
   }
 
   public static function parseToken ($token) {
-    $encrypt_method = 'AES-256-CBC';
-    $secret_key = get_setting('netflex_api');
-    $token = json_decode(base64_decode($token));
-    $key = hash('sha256', $secret_key);
-    $iv = $token->iv;
-    $output = openssl_decrypt($token->value, $encrypt_method, $key, 0, $iv);
+    try {
+      $encrypt_method = 'AES-256-CBC';
+      $secret_key = get_setting('netflex_api');
+      $token = json_decode(base64_decode($token));
+      if (json_last_error() === JSON_ERROR_NONE) {
+        $key = hash('sha256', $secret_key);
+        $iv = $token->iv;
+        $output = openssl_decrypt($token->value, $encrypt_method, $key, 0, $iv);
+        return $output;
+      }
 
-    return $output;
+      return null;
+    } catch (Exception $ex) {
+      return null;
+    }
   }
 
   public static function currentUser () {
