@@ -24,7 +24,7 @@ if ($signup) {
 
 $validOrder = $order && $order->id && $order->status === 'c';
 
-$code = $validOrder ? $order->secret : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+$code = $validOrder ? $signup->code : 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 $qrimage = $qrcode
   ->format('png')
