@@ -9,6 +9,9 @@
   "api/v1/discount/": "pages/api/add_discount.php",
   "api/v1/qrcode/": "pages/api/qrcode.php",
   "logout/": "pages/logout.php",
+  "profil/registrer/": "pages/profile/register.php",
+  "profil/glemt-passord/": "pages/profile/password_reset.php",
+  "profil/billetter/kvittering/": "pages/profile/receipt.php",
   "profil/billetter/": "pages/profile/tickets.php",
   "profil/": "pages/profile/index.php"
 }

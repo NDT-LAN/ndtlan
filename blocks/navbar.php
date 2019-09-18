@@ -33,8 +33,11 @@ $url = $url === 'index/' ? '/' : $url;
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="/profil">
+              <!-- <a class="dropdown-item" href="/profil">
                 <i class="fa fa-gear"></i>&nbsp; <?= get_label('Min profil', 'nb') ?>
+              </a> -->
+              <a class="dropdown-item" href="/profil/glemt-passord/<?= NDT::createToken($user->id) ?>">
+                <i class="fa fa-key"></i>&nbsp; <?= get_label('Endre passord', 'nb') ?>
               </a>
               <a class="dropdown-item" href="/profil/billetter">
                 <i class="fa fa-ticket"></i>&nbsp; <?= get_label('Mine billetter', 'nb') ?>
