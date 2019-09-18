@@ -5,8 +5,12 @@ use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Stripe\Checkout\Session;
 use Carbon\Carbon;
+use Apility\OpenGraph\OpenGraph;
 
 global $page;
+
+$og = new OpenGraph();
+$og->addProperty('title', get_meta_title());
 
 NDT::guard($page['url']);
 
@@ -152,7 +156,7 @@ if ($saleAvailable) {
 <? get_block('auth') ?>
 <!DOCTYPE html>
 <html lang="nb">
-<? get_block('head') ?>
+<? get_block('head', ['og' => $og->toMetaTags()]) ?>
 <body <?= get_body_class() ?>>
   <? get_block('navbar') ?>
   <? if ($saleAvailable) { ?>
