@@ -2,7 +2,7 @@
 
 use Helpers\NDT;
 
-NDT::guard('/me/tickets');
+NDT::guard('/profil/billetter');
 $user = NDT::currentUser();
 $signups = json_decode(
   NF::$capi->get('relations/signups/customer/' . $user->id)
@@ -21,7 +21,12 @@ foreach ($signups as $signup) {
     $signup->order = null;
   }
 
-  $signup->event = get_directory_entry($signup->entry_id);
+  $events = NF::search()
+    ->directory(10002)
+    ->where('id', $signup->entry_id)
+    ->fetch();
+
+  $signup->event = array_shift($events);
 }
 
 $signups = array_filter($signups, function ($signup) {
@@ -56,8 +61,21 @@ usort($signups, function ($a, $b) {
       <tbody>
         <? foreach ($signups as $signup) { ?>
           <tr>
-            <th scope="row"><?= $signup->order->register->receipt_order_id ?></th>
-            <td><?= $signup->event['name'] ?></td>
+            <th scope="row">
+              <a href="/profil/billetter/kvittering/<?= $signup->order->secret ?>">
+                <?= $signup->order->register->receipt_order_id ?>
+              </a>
+            </th>
+            <td>
+            <? if (isset($signup->event->page)) { ?>
+              <? $page = get_page($signup->event->page) ?>
+              <a href="/<?= $page['url'] ?>">
+                <?= $signup->event->name ?>
+              </a>
+            <? } else { ?>
+              <td><?= $signup->event->name ?>
+            <? } ?>
+            </td>
             <td><?= $signup->data->Plass ?? '' ?></td>
           </tr>
         <? } ?>

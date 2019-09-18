@@ -2,7 +2,7 @@
 
 use Helpers\NDT;
 
-NDT::guard('/me');
+NDT::guard('/profil');
 $user = NDT::currentUser();
 ?>
 <? get_block('auth') ?>
