@@ -1,3 +1,8 @@
+<?php
+  $pagedata = [
+    'url' => $page ? $page['url'] : null
+  ];
+?>
 <head>
   <meta charset="UTF-8">
   <title><?= trim($title ?? get_meta_title(), ' -') ?></title>
@@ -14,6 +19,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script>
+    window._page = <?= json_encode($pagedata) ?>
+
     var $buoop = {
       required: { e:0, f:-3, o:-3, s:-1, c:-3 },
       unsupported: true,

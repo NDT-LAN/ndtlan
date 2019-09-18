@@ -280,6 +280,8 @@ window.initShop = el => {
         },
 
         async checkoutStripe () {
+          const root = new URL(window.location.href).origin
+
           const response = await window.fetch(`/api/v1/checkout`, {
             method: 'POST',
             credentials: 'include',
@@ -288,12 +290,13 @@ window.initShop = el => {
             },
             body: JSON.stringify({
               ...this.checkout,
-              callback: window.location.href
+              callback: `${root}/${window._page.url}`
             })
           })
 
           const { data, stripe_public_key: stripePK } = await response.json()
           const stripe = new window.Stripe(stripePK)
+
           stripe.redirectToCheckout({
             sessionId: data.stripe_session_id
           })
