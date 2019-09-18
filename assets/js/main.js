@@ -10,6 +10,7 @@ window.initShop = el => {
     return new Vue({
       el: shopEl,
       data: () => ({
+        loaded: false,
         isRefreshing: false,
         discount: '',
         order: null,
@@ -214,6 +215,8 @@ window.initShop = el => {
         setInterval(() => {
           this.now = new Date()
         }, 1000)
+
+        this.loaded = true
       },
 
       methods: {
