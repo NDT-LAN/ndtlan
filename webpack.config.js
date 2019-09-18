@@ -26,6 +26,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public/assets')
   },
 
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
+  },
+
   module: {
     rules: [
       {

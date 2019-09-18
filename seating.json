@@ -1,0 +1,695 @@
+{
+  "width": 10,
+  "height": 26,
+  "map": [
+    [
+      null,
+      null,
+      {
+        "type": "info",
+        "label": "Inngang"
+      },
+      {
+        "type": "info",
+        "label": "Inngang"
+      },
+      {
+        "type": "info",
+        "label": "Inngang"
+      },
+      {
+        "type": "info",
+        "label": "Inngang"
+      }
+    ],
+    [],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 1"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 1"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 1"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 1"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 1"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 1"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "Dance Dance Revolution"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 2"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 2"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 2"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 2"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 2"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 2"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "Dance Dance Revolution"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 3"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 3"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 3"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 3"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 3"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 3"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "Dance Dance Revolution"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 4"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 4"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 4"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 4"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 4"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 4"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "Dance Dance Revolution"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 5"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 5"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 5"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 5"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 5"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 5"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 6"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 6"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 6"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 6"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 6"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 6"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 7"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 7"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 7"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 7"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 8"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 8"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 8"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 8"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 8"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 8"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 8"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 8"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 9"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 9"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 9"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 9"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 9"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 9"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 10"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 10"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 10"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 10"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 10"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 10"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 11"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 11"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 11"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 11"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 11"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 11"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 12"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 12"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 12"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 12"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 12"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 12"
+      },
+      null,
+      {
+        "type": "activity",
+        "label": "GG Bergen"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 13"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 13"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 13"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 13"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 13"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 13"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 14"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 14"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 14"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 14"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 14"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 14"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 15"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 15"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 15"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 15"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 15"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 15"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 16"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 16"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 16"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 16"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 16"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 16"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 17"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 17"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 17"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 17"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 17"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 17"
+      },
+      null,
+      {
+        "type": "kiosk",
+        "label": "Kiosk"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 18"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 18"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 18"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 18"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 18"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 18"
+      },
+      null,
+      {
+        "type": "kiosk",
+        "label": "Kiosk"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 19"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 19"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 19"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 19"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 19"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 19"
+      },
+      null,
+      {
+        "type": "kiosk",
+        "label": "Kiosk"
+      }
+    ],
+    [
+      {
+        "type": "seat",
+        "label": "Rad 1, Plass 20"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 2, Plass 20"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 3, Plass 20"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 4, Plass 20"
+      },
+      null,
+      {
+        "type": "seat",
+        "label": "Rad 5, Plass 20"
+      },
+      {
+        "type": "seat",
+        "label": "Rad 6, Plass 20"
+      },
+      null,
+      {
+        "type": "kiosk",
+        "label": "Kiosk"
+      }
+    ],
+    [],
+    [
+      null,
+      {
+        "type": "scene",
+        "label": "Scene"
+      },
+      {
+        "type": "scene",
+        "label": "Scene"
+      },
+      {
+        "type": "scene",
+        "label": "Scene"
+      },
+      {
+        "type": "scene",
+        "label": "Scene"
+      },
+      {
+        "type": "scene",
+        "label": "Scene"
+      },
+      {
+        "type": "scene",
+        "label": "Scene"
+      }
+    ]
+  ]
+}

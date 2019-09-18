@@ -40,8 +40,9 @@
     $og->addProperty('image:height', 1200);
   }
 ?>
+<? get_block('auth') ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb">
 <? get_block('head', [
   'title' => $article['name'] . ' - NDT-LAN',
   'og' => $og->toMetaTags()

@@ -1,0 +1,54 @@
+<?php
+
+use Helpers\NDT;
+use Carbon\Carbon;
+
+$config = NDT::getSeatMap();
+$event = NDT::currentEvent();
+
+$signupsResponse = NF::$capi->get('relations/signups/entry/' . $event->id);
+$signups = json_decode($signupsResponse->getBody());
+$reservationsResponse = NF::$capi->get('relations/signups/entry/' . $event->id . '/status/reservation');
+$reservations = json_decode($reservationsResponse->getBody());
+
+$signups = array_merge($signups, $reservations);
+$user = NDT::currentUser();
+$myreservation = null;
+
+foreach ($config->map as $y => $row) {
+  foreach ($row as $x => $seat) {
+    if (!$seat) {
+      $config->map[$y][$x] = (object)[];
+
+      $seat = $config->map[$y][$x];
+    }
+
+    $seat->x = $x;
+    $seat->y = $y;
+
+    $signup = array_find($signups, function ($signup) use ($seat) {
+      if (isset($signup->data->x) && isset($signup->data->y)) {
+        return $signup->data->x == $seat->x && $signup->data->y == $seat->y;
+      }
+    });
+
+    if ($signup) {
+      if ($signup->customer_id == $user->id) {
+        $seat->type = $signup->status === 'reservation' ? 'myreservation' : 'myseat';
+        if ($signup->status === 'reservation') {
+          $myreservation = Carbon::parse($signup->expires_at)
+            ->timezone('Europe/Oslo')
+            ->toDateTimeString();
+        }
+      } else {
+        $seat->type = 'taken';
+        $seat->label .= PHP_EOL . get_customer($signup->customer_id)['username'];
+      }
+    }
+  }
+}
+
+$config->reservation = $myreservation;
+
+header('Content-Type: application/json');
+die(json_encode($config));

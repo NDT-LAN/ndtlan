@@ -27,6 +27,23 @@ $countdownSettings = [
 
 $linked_page = get_block_content_string($linkSettings);
 $countDownTarget = get_block_content_string($countdownSettings);
+$countDownLabel = '';
+
+if ($countDownTarget) {
+  date_default_timezone_set('Europe/Oslo');
+  $delta = strtotime($countDownTarget) - time();
+  $seconds = $delta % 60;
+  $minutes = floor(($delta / 60) % 60);
+  $hours = floor($delta / (60 * 60) % 24);
+  $days = floor($delta / (60 * 60 * 24));
+
+  $seconds = ($seconds < 10 ? '0' : '') . $seconds;
+  $minutes = ($minutes < 10 ? '0' : '') . $minutes;
+  $hours = ($hours < 10 ? '0' : '') . $hours;
+
+  $countDownLabel = ($days ? ($days . ' dager, ') : '') . $hours . ':' . $minutes . ':' . $seconds;
+}
+
 ?>
 <div class="jumbotron jumbotron-fluid bg-dark text-center">
   <div class="container">
@@ -48,7 +65,13 @@ $countDownTarget = get_block_content_string($countdownSettings);
       <?= get_block_content('lead') ?>
     </p>
     <? if ($countDownTarget) { ?>
-      <h2 id="<?= $blockhash ?>_timer" data-target="<?= $countDownTarget ?>" class="display-5" style="font-family: monospace">&nbsp;</h2>
+      <h2
+        id="<?= $blockhash ?>_timer"
+        data-target="<?= $countDownTarget ?>"
+        class="display-5"
+        style="font-family: monospace">
+        <?= $countDownLabel ?>
+      </h2>
       <? $page['add_to_bodyclose'] .= '<script>startCountdown("#' . $blockhash . '_timer")</script>' ?>
     <? } ?>
     <p><?= get_block_content('body') ?></p>
