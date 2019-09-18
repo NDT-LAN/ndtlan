@@ -18,6 +18,11 @@ $signupStart = Carbon::parse($event->signupStart);
 $saleNotStarted = $signupStart->gt($now);
 $saleAvailable = $saleAvailable && !$saleNotStarted;
 
+if (getenv('ENV') === 'dev' && $event) {
+  $saleAvailable = true;
+  $saleNotStarted = false;
+}
+
 $countDownLabel = '';
 
 if ($signupStart) {
@@ -48,7 +53,13 @@ if ($saleAvailable) {
     );
 
     if ($order && isset($order->data->stripe_session_id) && $order->status !== 'c') {
-      Stripe::setApiKey(get_setting('stripe_private_key'));
+      $apiKey = 'stripe_live_private_key';
+
+      if (getenv('ENV') === 'dev') {
+        $apiKey = 'stripe_test_private_key';
+      }
+
+      Stripe::setApiKey(get_setting($apiKey));
       $session = Session::retrieve($order->data->stripe_session_id);
       $payment = PaymentIntent::retrieve($session->payment_intent);
 
