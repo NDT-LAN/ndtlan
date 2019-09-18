@@ -156,6 +156,8 @@ a {
 
 .ndt-seating-container {
   overflow-x: auto;
+  overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 }
 
 .ndt-seating-row {
