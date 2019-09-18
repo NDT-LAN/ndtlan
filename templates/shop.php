@@ -114,13 +114,6 @@ if ($saleAvailable) {
         NF::$capi->put('commerce/orders/' . $order->id, ['json' => [
           'status' => 'c'
         ]]);
-
-        NF::$capi->put('commerce/orders/' . $order->id . '/data', ['json' => [
-          'data_alias' => 'event',
-          'type' => 'text',
-          'label' => 'Arrangement',
-          'value' => $signup->event_id
-        ]]);
       }
 
       $order = json_decode(
@@ -130,7 +123,7 @@ if ($saleAvailable) {
 
       NF::$capi->post('relations/notifications', ['json' => [
         'body' => [
-          'name' => $order->customer_firstname,
+          'name' => $order->checkout->firstname,
           'seat' => $signup->data->Plass,
           'event' => $event->name,
           'order' => $signup->code
