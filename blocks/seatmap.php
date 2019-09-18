@@ -11,9 +11,7 @@
         :title="seat.label"
         :aria-label="getSeatAlt(seat)"
         @click="selectSeat(seat.x, seat.y)"
-      >
-        &nbsp;
-      </button>
+      ></button>
     </template>
   </div>
 </div>
