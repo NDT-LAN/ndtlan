@@ -97,16 +97,21 @@ class NDT {
         )
       );
 
-      $needsConsent = true;
+      if ($user) {
+        $needsConsent = true;
 
-      if ($user->birthday) {
-        $birthday = Carbon::parse($user->birthday);
-        $needsConsent = Carbon::now()->diffInYears($birthday) < 18;
+        if ($user->birthday) {
+          $birthday = Carbon::parse($user->birthday);
+          $needsConsent = Carbon::now()->diffInYears($birthday) < 18;
+        }
+
+        $user->needs_parental_consent = $needsConsent;
+
+        return $user;
+      } else {
+        session_destroy();
+        setcookie('remember', '', time() - 3600, '*');
       }
-
-      $user->needs_parental_consent = $needsConsent;
-
-      return $user;
     }
   }
 }
