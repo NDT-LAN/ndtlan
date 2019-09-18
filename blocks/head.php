@@ -15,8 +15,14 @@
   <?= $og ?? get_block('opengraph') ?>
   <?= get_codeinject_head() ?>
 
+  <script src="<?= get_asset('js/main.js') ?>"></script>
+
   <link rel="stylesheet" href="<?= get_asset('css/main.css') ?>">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <? if (isset($headContent)) { ?>
+    <?= $headContent ?>
+  <? } ?>
 
   <script>
     window._page = <?= json_encode($pagedata) ?>

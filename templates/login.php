@@ -128,7 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="d-flex flex-column">
           <a href="/profil/registrer">
-            <i class="fa fa-plus"></i>&nbsp;Opprett ny konto
+            <i class="fa fa-plus"></i>&nbsp;
+            Opprett ny konto
           </a>
           <a href="/profil/glemt-passord">
             <i class="fa fa-key"></i>&nbsp;
