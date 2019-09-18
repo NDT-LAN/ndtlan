@@ -14,7 +14,7 @@
     $p = 1;
   }
 
-  $itemsPerPage = 2;
+  $itemsPerPage = get_setting('article_items_per_page') ?? 5;
 
   $articleCount = NF::search()
     ->directory(10000)
