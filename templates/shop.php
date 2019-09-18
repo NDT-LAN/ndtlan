@@ -18,6 +18,11 @@ $signupStart = Carbon::parse($event->signupStart);
 $saleNotStarted = $signupStart->gt($now);
 $saleAvailable = $saleAvailable && !$saleNotStarted;
 
+if (getenv('ENV') === 'dev' && $event) {
+  $saleAvailable = true;
+  $saleNotStarted = false;
+}
+
 $countDownLabel = '';
 
 if ($signupStart) {
