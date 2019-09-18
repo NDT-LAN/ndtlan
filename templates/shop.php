@@ -95,7 +95,6 @@ if (isset($url_asset[1])) {
         'event' => $event->name,
         'order' => $signup->code
       ],
-      /* 'attachments' => $attachments, */
       'to' => [['mail' => $order->customer_mail]],
       'subject' => 'NDT-LAN - Kvittering #' . $order->register->receipt_order_id,
       'template' => 'ticket'
@@ -122,7 +121,7 @@ $event = NDT::currentEvent();
 <body <?= get_body_class() ?>>
   <? get_block('navbar') ?>
   <? if (!isset($order) || $order->status !== 'c') { ?>
-    <div id="shop" class="container p-4">
+    <div id="shop" class="container p-4 d-none" :class="{ 'd-block': loaded }">
       <ul class="nav nav-pills nav-pills-secondary nav-fill bg-dark">
         <li
           v-for="(step, i) in steps"
@@ -135,6 +134,9 @@ $event = NDT::currentEvent();
         </li>
       </ul>
       <br>
+      <button class="btn btn-secondary btn-block" @click="nextStep" :disabled="!formValidated">
+        {{ currentStep === 2 ? 'Fullfør' : 'Gå videre' }} <i class="fa fa-long-arrow-right"></i>
+      </button>
       <div class="container bg-dark">
         <template v-if="currentStep === 0">
           <? get_block('checkout/ticket_select') ?>
