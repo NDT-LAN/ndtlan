@@ -24,6 +24,7 @@ foreach ($seating->map as $y => $row) {
       if ($signup) {
         if ($user && $signup->customer_id == $user->id) {
           $seat->type = 'myseat';
+          $seat->label .= PHP_EOL . $user->username;
         } else {
           $customer = get_customer($signup->customer_id);
           $seat->type = 'taken';
