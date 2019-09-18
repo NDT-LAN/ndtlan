@@ -17,6 +17,26 @@ class NDT {
     return array_shift($results);
   }
 
+  public static function getStripePK () {
+    $apiKey = 'stripe_live_public_key';
+
+    if (getenv('ENV') === 'dev') {
+      $apiKey = 'stripe_test_public_key';
+    }
+
+    return get_setting($apiKey);
+  }
+
+  public static function getStripeSK () {
+    $apiKey = 'stripe_live_private_key';
+
+    if (getenv('ENV') === 'dev') {
+      $apiKey = 'stripe_test_private_key';
+    }
+
+    return get_setting($apiKey);
+  }
+
   public static function getEvent ($id) {
     $results = NF::search()
       ->directory(10002)

@@ -8,13 +8,7 @@ use Stripe\Checkout\Session;
 try {
 $checkoutData = json_decode(file_get_contents('php://input'));
 
-$apiKey = 'stripe_live_private_key';
-
-if (getenv('ENV') === 'dev') {
-  $apiKey = 'stripe_test_private_key';
-}
-
-Stripe::setApiKey(get_setting($apiKey));
+Stripe::setApiKey(NDT::getStripeSK());
 
 $event = NDT::currentEvent();
 
@@ -135,14 +129,7 @@ $order = json_decode(
 );
 
 $order->data->stripe_session_id = $session->id;
-
-$apiKey = 'stripe_live_public_key';
-
-if (getenv('ENV') === 'dev') {
-  $apiKey = 'stripe_test_public_key';
-}
-
-$order->stripe_public_key = get_setting($apiKey);
+$order->stripe_public_key = NDT::getStripePK();
 
 header('Content-Type: application/json');
 die(json_encode($order));

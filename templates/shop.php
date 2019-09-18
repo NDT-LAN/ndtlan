@@ -57,13 +57,8 @@ if ($saleAvailable) {
     );
 
     if ($order && isset($order->data->stripe_session_id) && $order->status !== 'c') {
-      $apiKey = 'stripe_live_private_key';
+      Stripe::setApiKey(NDT::getStripeSK());
 
-      if (getenv('ENV') === 'dev') {
-        $apiKey = 'stripe_test_private_key';
-      }
-
-      Stripe::setApiKey(get_setting($apiKey));
       $session = Session::retrieve($order->data->stripe_session_id);
       $payment = PaymentIntent::retrieve($session->payment_intent);
 
