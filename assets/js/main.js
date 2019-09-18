@@ -8,6 +8,10 @@ import startCountdown from './countdown'
 
 window.startCountdown = startCountdown
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 window.initShop = el => {
   const shopEl = document.querySelector(el)
   if (shopEl) {
