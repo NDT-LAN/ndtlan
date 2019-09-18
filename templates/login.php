@@ -124,12 +124,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </button>
         <? } ?>
 
-      <? if ($_mode || $forgottenPassword) { ?>
         <br>
-        <a href="#">
-          <?= get_page_content('forgottenPassword', 'text') ?>
-        </a>
-      <? } ?>
+
+        <div class="d-flex flex-column">
+          <a href="/profil/registrer">
+            <i class="fa fa-plus"></i>&nbsp;Opprett ny konto
+          </a>
+          <a href="/profil/glemt-passord">
+            <i class="fa fa-key"></i>&nbsp;
+          <? if ($_mode && $_mode === 'edit') { ?>
+            <?= get_page_content('forgottenPassword', 'text') ?>
+          <? } else { ?>
+            <?= strip_tags(get_page_content('forgottenPassword', 'text')) ?>
+          <? } ?>
+          </a>
+        </div>
     </form>
   </div>
   <? get_block('footer') ?>
