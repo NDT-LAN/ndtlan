@@ -68,9 +68,7 @@ foreach ($seating->map as $y => $row) {
           data-toggle="tooltip"
           title="<?= $seat ? $seat->label : '' ?>"
           aria-label="<?= $seat ? $seat->label : '' ?>"
-        >
-          &nbsp;
-        </button>
+        ></button>
       <? } ?>
       </div>
     <? } ?>

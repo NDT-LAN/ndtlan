@@ -78,6 +78,12 @@ a {
 .ndt-seat {
   margin: 0.25rem;
   font-size: 0.5rem;
+  font-family: FontAwesome;
+  text-align: center;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
 
   &--myseat {
     pointer-events: initial;
@@ -89,6 +95,18 @@ a {
     background: $seat-myreservation;
   }
 
+  &--myseat {
+    &:before {
+      content: "\f00c";
+    }
+  }
+
+  &--myreservation {
+    &:before {
+      content: "\f005";
+    }
+  }
+
   &--seat {
     pointer-events: initial;
     background: $seat-seat;
@@ -97,19 +115,27 @@ a {
   &--taken {
     pointer-events: initial;
     background: $seat-taken;
+    &:before {
+      content: "\f007";
+    }
   }
 
   &--kiosk {
     background: $seat-kiosk;
+    &:before {
+      content: "\f155";
+    }
   }
 
   &--scene {
     background: $seat-scene;
-    color: $white;
   }
 
   &--activity {
     background: $seat-activity;
+    &:before {
+      content: "\f11b";
+    }
   }
 
   &--entrance {
@@ -117,7 +143,11 @@ a {
   }
 
   &--info {
+    color: $white;
     background: $seat-info;
+    &:before {
+      content: "\f05a";
+    }
   }
 }
 
