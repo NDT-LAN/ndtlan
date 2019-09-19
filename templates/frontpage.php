@@ -14,6 +14,8 @@
     $p = 1;
   }
 
+  $tag = $_GET['tag'] ?? null;
+
   $itemsPerPage = get_setting('article_items_per_page') ?? 5;
 
   $articleCount = NF::search()
@@ -27,6 +29,19 @@
     $p = $pages;
   }
 
+  $search = NF::search()
+    ->directory(10000)
+    ->where('published', true)
+    ->fields(['name','author', 'banner', 'intro', 'updated', 'url', 'tags'])
+    ->sortBy('id','desc');
+
+  if ($tag) {
+    $search  = $search->contains('tags', $tag);
+  }
+
+  $searchResult = $search->paginate($p - 1, $itemsPerPage)
+    ->fetch();
+
   $articles = array_map(function ($article) {
     return [
       'title' => $article->name,
@@ -37,13 +52,7 @@
       'author' => $article->author,
       'tags' => array_filter(explode(',', $article->tags))
     ];
-  }, NF::search()
-    ->directory(10000)
-    ->where('published', true)
-    ->fields(['name','author', 'banner', 'intro', 'updated', 'url', 'tags'])
-    ->sortBy('id','desc')
-    ->paginate($p - 1, $itemsPerPage)
-    ->fetch());
+  }, $searchResult);
 ?>
 <? get_block('auth') ?>
 <!DOCTYPE html>
