@@ -20,7 +20,7 @@ $author = $author ?? 'NDT-LAN';
       <h2 class="card-title"><?= $title ?></h2>
     </a>
     <? foreach ($tags as $tag) { ?>
-      <span class="badge badge-primary">#<?= $tag ?></span>&nbsp;
+      <span class="badge badge-secondary">#<?= $tag ?></span>&nbsp;
     <? } ?>
     <p class="card-text"><?= $intro ?></p>
   </div>
