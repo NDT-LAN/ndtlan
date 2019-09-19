@@ -62,24 +62,28 @@
   <? get_block('navbar') ?>
   <main class="container pt-4 p-3 d-flex flex-column flex-grow-1 justify-content-center">
     <?= get_page_blocks('before_articles') ?>
-    <? foreach ($articles as $article) { ?>
-      <?= get_block('article_card', $article) ?>
-    <? } ?>
 
-    <nav aria-label="Artikkel paginering">
-      <ul class="pagination">
-        <? if ($p > 1) { ?>
-          <li class="page-item">
-            <a class="page-link bg-dark" href="?page=<?= $p - 1 ?>">← Forrige</a>
-          </li>
-        <? } ?>
-        <? if ($p + 1 <= $pages) { ?>
-          <li class="page-item">
-            <a class="page-link bg-dark" href="?page=<?= $p + 1 ?>">Neste →</a>
-          </li>
-        <? } ?>
-      </ul>
-    </nav>
+    <div class="pt-3 pb-3">
+      <? foreach ($articles as $article) { ?>
+        <?= get_block('article_card', $article) ?>
+      <? } ?>
+
+      <nav aria-label="Artikkel paginering">
+        <ul class="pagination">
+          <? if ($p > 1) { ?>
+            <li class="page-item">
+              <a class="page-link bg-dark" href="?page=<?= $p - 1 ?>">← Forrige</a>
+            </li>
+          <? } ?>
+          <? if ($p + 1 <= $pages) { ?>
+            <li class="page-item">
+              <a class="page-link bg-dark" href="?page=<?= $p + 1 ?>">Neste →</a>
+            </li>
+          <? } ?>
+        </ul>
+      </nav>
+
+    </div>
 
     <?= get_page_blocks('after_articles') ?>
   </main>
