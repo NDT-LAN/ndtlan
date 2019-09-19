@@ -66,7 +66,7 @@
     </template>
     <div v-if="!order.user.birthday" class="form-group">
       <label class="form-check-label" for="birthday">Fødelsdag</label>
-      <input type="tel" class="form-control" id="birthday" name="birthday" v-model="checkout.birthday">
+      <input type="text" class="form-control datepicker" id="birthday" name="birthday" v-model="checkout.birthday">
     </div>
     <div v-if="!order.user.adresse" class="form-group">
       <label class="form-check-label" for="address">Addresse</label>
