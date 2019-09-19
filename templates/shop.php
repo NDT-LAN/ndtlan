@@ -75,22 +75,24 @@ if ($saleAvailable) {
         $data = $signup->data;;
         $data->Plass = $seating->map[$signup->data->y][$signup->data->x]->label;
 
-        NF::$capi->post('relations/signups', ['json' => [
-          'firstname' => $signup->firstname,
-          'surname' => $signup->surname,
-          'customer_id' => $signup->customer_id,
-          'order_id' => $order->id,
-          'mail' => $signup->mail,
-          'entry_id' => $signup->entry_id,
-          'created' => $signup->created,
-          'updated' => Carbon::now()
-            ->timezone('Europe/Oslo')
-            ->toDateTimeString(),
-          'status' => 'default',
-          'data' => $data
-        ]]);
+        $signup_id = json_decode(NF::$capi->post('relations/signups', ['json' => [
+            'firstname' => $signup->firstname,
+            'surname' => $signup->surname,
+            'customer_id' => $signup->customer_id,
+            'order_id' => $order->id,
+            'mail' => $signup->mail,
+            'entry_id' => $signup->entry_id,
+            'created' => $signup->created,
+            'updated' => Carbon::now()
+              ->timezone('Europe/Oslo')
+              ->toDateTimeString(),
+            'status' => 'default',
+            'data' => $data
+          ]])->getBody()
+        )->signup_id;
 
         NF::$capi->delete('relations/signups/' . $signup->id);
+        $signup = NF::$capi->get('relations/signups/' . $signup_id);
 
         NF::$capi->post('commerce/orders/' . $order->id . '/payment', ['json' => [
           'status' => 'paid',
@@ -121,7 +123,7 @@ if ($saleAvailable) {
           'name' => $order->checkout->firstname,
           'seat' => $signup->data->Plass,
           'event' => $event->name,
-          'order' => $signup->code
+          'order' => $signup_code
         ],
         'to' => [['mail' => $order->customer_mail]],
         'subject' => 'NDT-LAN - Kvittering #' . $order->register->receipt_order_id,
