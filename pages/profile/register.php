@@ -44,6 +44,10 @@
       ->startOfDay()
       ->toDateTimeString();
 
+    if (Carbon::parse($payload['birthday'])->diffInYears(Carbon::now()) < 13) {
+      $errors['birthday'] = 'Du må være fylt 13 år for å kunne delta på NDT-LAN';
+    }
+
     if (get_customer_data($payload['username'])) {
       $errors['username'] = 'Dette brukernavnet er allerede registrert';
     }
