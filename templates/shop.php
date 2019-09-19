@@ -123,7 +123,7 @@ if ($saleAvailable) {
           'name' => $order->checkout->firstname,
           'seat' => $signup->data->Plass,
           'event' => $event->name,
-          'order' => $signup_code
+          'order' => $signup->code
         ],
         'to' => [['mail' => $order->customer_mail]],
         'subject' => 'NDT-LAN - Kvittering #' . $order->register->receipt_order_id,
