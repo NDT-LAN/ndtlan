@@ -63,6 +63,28 @@ if ($saleAvailable) {
       $payment = PaymentIntent::retrieve($session->payment_intent);
 
       if ($payment && $payment->status === 'succeeded' && count($payment->charges)) {
+        NF::$capi->post('commerce/orders/' . $order->id . '/payment', ['json' => [
+          'status' => 'paid',
+          'amount' => $payment->amount_received / 100,
+          'payment_method' => 'stripe',
+          'transaction_id' => $payment->charges->data[0]->id
+        ]]);
+
+        sleep(1);
+
+        NF::$capi->put('commerce/orders/' . $order->id . '/register');
+        NF::$capi->put('commerce/orders/' . $order->id . '/checkout', ['json' => [
+          'checkout_end' => Carbon::now()
+            ->timezone('Europe/Oslo')
+            ->toDateTimeString()
+        ]]);
+
+        NF::$capi->put('commerce/orders/' . $order->id, ['json' => [
+          'status' => 'c'
+        ]]);
+
+        sleep(1);
+
         $reservationsResponse = NF::$capi->get('relations/signups/entry/' . $event->id . '/status/reservation');
         $reservations = json_decode($reservationsResponse->getBody());
 
@@ -91,26 +113,10 @@ if ($saleAvailable) {
           ]])->getBody()
         )->signup_id;
 
+        sleep(1);
+
         NF::$capi->delete('relations/signups/' . $signup->id);
         $signup = json_decode(NF::$capi->get('relations/signups/' . $signup_id)->getBody());
-
-        NF::$capi->post('commerce/orders/' . $order->id . '/payment', ['json' => [
-          'status' => 'paid',
-          'amount' => $payment->amount_received / 100,
-          'payment_method' => 'stripe',
-          'transaction_id' => $payment->charges->data[0]->id
-        ]]);
-
-        NF::$capi->put('commerce/orders/' . $order->id . '/register');
-        NF::$capi->put('commerce/orders/' . $order->id . '/checkout', ['json' => [
-          'checkout_end' => Carbon::now()
-            ->timezone('Europe/Oslo')
-            ->toDateTimeString()
-        ]]);
-
-        NF::$capi->put('commerce/orders/' . $order->id, ['json' => [
-          'status' => 'c'
-        ]]);
       }
 
       $order = json_decode(
@@ -130,6 +136,8 @@ if ($saleAvailable) {
         'template' => 'ticket'
       ]]);
     }
+
+    $_SESSION['order_id'] = null;
 
     if (!isset($order->id) || !isset($order->status) || $order->status !== 'c') {
       header('Location: /' . $page['url']);

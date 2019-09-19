@@ -24,7 +24,7 @@ function getOrder ($user) {
       ->getBody()
   );
 
-  if (isset($order->status) && $order->status === 'c') {
+  if (isset($order->status) && $order->status !== 'a') {
     $_SESSION['order_id'] = null;
     return getOrder($user);
   }
