@@ -52,9 +52,13 @@ class NDT {
   }
 
   public static function guard ($redirect = '/') {
-    if (!static::currentUser()) {
-      header('Location: /login?redirect=' . $redirect);
-      die();
+    global $_mode;
+
+    if (!isset($_mode)) {
+      if (!static::currentUser()) {
+        header('Location: /login?redirect=' . $redirect);
+        die();
+      }
     }
   }
 

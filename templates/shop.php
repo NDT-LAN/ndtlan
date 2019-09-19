@@ -225,6 +225,9 @@ if ($saleAvailable) {
       </div>
     </main>
   <? } ?>
+  <div class="container p-3">
+    <?= get_page_blocks('blocks') ?>
+  </div>
   <? get_block('footer') ?>
 </body>
 </html>
