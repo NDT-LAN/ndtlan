@@ -11,12 +11,7 @@ let $ = window.$
 $(function () {
   let tooltips = $('[data-toggle="tooltip"]')
   if (tooltips.length && tooltips.tooltip) {
-    console.log('fjsidjfidf')
     tooltips.tooltip()
-  } else {
-    // eslint-disable-next-line
-    debugger
-    console.log(tooltips)
   }
 
   const date = new Date()
