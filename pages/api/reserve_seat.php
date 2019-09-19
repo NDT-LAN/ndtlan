@@ -154,7 +154,6 @@ if (isset($_GET['ticket']) && isset($_GET['x']) && isset($_GET['y'])) {
     'surname' => $user->surname,
     'customer_id' => $user->id,
     'data' => [
-      'ticket' => $ticket->id,
       'x' => $x,
       'y' => $y
     ],

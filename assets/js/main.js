@@ -19,18 +19,21 @@ $(function () {
   date.setMonth(0)
   date.setDate(1)
 
-  $('.datepicker').datepicker({
-    isRTL: false,
-    format: 'dd.mm.yyyy',
-    autoclose: true,
-    language: 'no',
-    orientation: 'bottom left',
-    defaultViewDate: {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate()
-    }
-  })
+  const datepickers = $('.datepicker')
+  if (datepickers && datepickers.datepicker) {
+    datepickers.datepicker({
+      isRTL: false,
+      format: 'dd.mm.yyyy',
+      autoclose: true,
+      language: 'no',
+      orientation: 'bottom left',
+      defaultViewDate: {
+        year: date.getFullYear(),
+        month: date.getMonth(),
+        day: date.getDate()
+      }
+    })
+  }
 })
 
 window.initShop = el => {

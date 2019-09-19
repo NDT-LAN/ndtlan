@@ -19,6 +19,9 @@ $author = $author ?? 'NDT-LAN';
     <a href="<?= $url ?>">
       <h2 class="card-title"><?= $title ?></h2>
     </a>
+    <? foreach ($tags as $tag) { ?>
+      <span class="badge badge-primary">#<?= $tag ?></span>&nbsp;
+    <? } ?>
     <p class="card-text"><?= $intro ?></p>
   </div>
   <div class="card-footer">
