@@ -43,7 +43,6 @@ foreach ($seating->map as $y => $row) {
           $customer = get_customer($signup->customer_id);
           $seat->type = 'taken';
           if ($customer) {
-            $seat->label .= PHP_EOL . '(reservert)';
             $seat->label .= PHP_EOL . $customer['username'];
           }
         }
