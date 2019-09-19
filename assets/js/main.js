@@ -1,4 +1,3 @@
-import 'bootstrap'
 import '../scss/main.scss'
 import Vue from 'vue'
 import dayjs from 'dayjs'
@@ -12,7 +11,12 @@ let $ = window.$
 $(function () {
   let tooltips = $('[data-toggle="tooltip"]')
   if (tooltips.length && tooltips.tooltip) {
-    $('[data-toggle="tooltip"]').tooltip()
+    console.log('fjsidjfidf')
+    tooltips.tooltip()
+  } else {
+    // eslint-disable-next-line
+    debugger
+    console.log(tooltips)
   }
 
   const date = new Date()
