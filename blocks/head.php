@@ -15,6 +15,21 @@
   <?= $og ?? get_block('opengraph') ?>
   <?= get_codeinject_head() ?>
 
+  <? if(isset($_mode) && $_mode === 'edit') { ?>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    >
+    </script>
+  <? } else { ?>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    >
+    </script>
+  <? } ?>
   <script src="<?= get_asset('js/main.js') ?>"></script>
 
   <link rel="stylesheet" href="<?= get_asset('css/main.css') ?>">

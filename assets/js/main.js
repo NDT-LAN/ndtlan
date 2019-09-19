@@ -1,6 +1,5 @@
 import 'bootstrap'
 import '../scss/main.scss'
-import $ from 'jquery'
 import Vue from 'vue'
 import dayjs from 'dayjs'
 
@@ -8,18 +7,15 @@ import startCountdown from './countdown'
 
 window.startCountdown = startCountdown
 
-window.$ = $
-window.jQuery = $
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+window.$(function () {
+  window.$('[data-toggle="tooltip"]').tooltip()
 
   const date = new Date()
   date.setFullYear(date.getFullYear() - 13)
   date.setMonth(0)
   date.setDate(1)
 
-  const datepickers = $('.datepicker')
+  const datepickers = window.$('.datepicker')
   if (datepickers && datepickers.datepicker) {
     datepickers.datepicker({
       isRTL: false,
@@ -356,7 +352,7 @@ window.initShop = el => {
 
         enableTooltips () {
           setTimeout(() => {
-            $('[data-toggle="tooltip"]')
+            window.$('[data-toggle="tooltip"]')
               .tooltip()
           }, 0)
         },
@@ -383,7 +379,7 @@ window.initShop = el => {
 
           await this.refreshSeatmap()
           setTimeout(() => {
-            $('.tooltip').tooltip('hide')
+            window.$('.tooltip').tooltip('hide')
           }, 0)
         },
 
