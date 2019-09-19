@@ -10,6 +10,20 @@ $signups = json_decode($signups->getBody());
 $reservations = NF::$capi->get('relations/signups/entry/' . $event->id . '/status/reservation');
 $reservations = json_decode($reservations->getBody());
 
+$editStyle = 'position: initial; margin-right: 0.5rem';
+
+$refreshSettings = [
+  'name' => 'Automatisk oppdater',
+  'description' => 'Sett interval for oppdatering',
+  'icon' => 'fa fa-clock-o',
+  'type' => 'integer',
+  'alias' => 'refresh_interval',
+  'content_field' => 'text',
+  'style' => $editStyle
+];
+
+$refreshInterval = get_block_content_string($refreshSettings);
+
 foreach ($seating->map as $y => $row) {
   foreach ($row as $x => $seat) {
     if ($seat) {
@@ -54,6 +68,7 @@ foreach ($seating->map as $y => $row) {
 }
 
 ?>
+<?= set_edit_btn($refreshSettings) ?>
 <div class="d-flex flex-column pt-3">
   <? get_block('seating_explanation') ?>
   <div class="container ndt-seating-container p-4">
@@ -77,3 +92,10 @@ foreach ($seating->map as $y => $row) {
     </div>
   </div>
 </div>
+<? if ($refreshInterval && $refreshInterval > 0) { ?>
+<script>
+  setTimeout(function () {
+    window.location.reload()
+  }, <?= $refreshInterval ?> * 1000)
+</script>
+<? } ?>
