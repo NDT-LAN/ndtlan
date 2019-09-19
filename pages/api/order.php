@@ -35,7 +35,8 @@ function getOrder ($user) {
 try {
   $order = getOrder(NDT::currentUser());
 } catch (Exception $ex) {
-  dd($ex);
+  http_response_code(500);
+  die();
 }
 
 header('Content-Type: application/json');
