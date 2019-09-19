@@ -110,7 +110,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">@</span>
         </div>
-        <input value="<?= $payload['mail'] ?? null ?>" type="email" name="mail" class="form-control <?= $errors['mail'] ? 'is-invalid' : '' ?>" placeholder="E-post adresse" aria-label="E-post adresse" required autocomplete="email">
+        <input value="<?= $payload['mail'] ?? null ?>" type="email" name="mail" class="form-control <?= $errors['mail'] ? 'is-invalid' : '' ?>" placeholder="E-post adresse" aria-label="E-post adresse" required autocomplete="email" autocomplete="username">
       </div>
 
       <? if ($errors['mail']) { ?>
@@ -196,7 +196,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fa fa-key"></i></span>
         </div>
-        <input value="<?= $_POST['password'] ?? null ?>" type="password" name="password" class="form-control <?= $errors['password'] ? 'is-invalid' : '' ?>" placeholder="Passord" aria-label="Passord" required autocomplete="street-address">
+        <input value="<?= $_POST['password'] ?? null ?>" type="password" name="password" class="form-control <?= $errors['password'] ? 'is-invalid' : '' ?>" placeholder="Passord" aria-label="Passord" required autocomplete="password">
       </div>
 
       <? if ($errors['password']) { ?>
@@ -212,7 +212,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fa fa-repeat"></i></span>
         </div>
-        <input value="<?= $_POST['password-repeat'] ?? null ?>" type="password" name="password-repeat" class="form-control <?= $errors['password-repeat'] ? 'is-invalid' : '' ?>" placeholder="Gjenta passord" aria-label="Passord" required autocomplete="street-address">
+        <input value="<?= $_POST['password-repeat'] ?? null ?>" type="password" name="password-repeat" class="form-control <?= $errors['password-repeat'] ? 'is-invalid' : '' ?>" placeholder="Gjenta passord" aria-label="Passord" required autocomplete="password">
       </div>
 
       <? if ($errors['password-repeat']) { ?>

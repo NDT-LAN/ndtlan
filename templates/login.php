@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         value="<?= $username ?>"
         class="form-control"
         placeholder="Brukernavn / e-post"
+        autocomplete="username"
         required
         <?= !$username ? 'autofocus' : ''?>
       >
@@ -89,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         class="form-control"
         placeholder="Passord"
         required
+        autocomplete="password"
         <?= $username ? 'autofocus' : '' ?>
       >
       <? if ($error) { ?>
