@@ -1,5 +1,6 @@
 <?php
 
+global $edit_tools;
 $contact_email = trim(get_static_content('footer_content', 'contact_email', 'text'));
 $facebook_url = trim(get_static_content('footer_content', 'facebook_url', 'text'));
 ?>
@@ -33,11 +34,10 @@ $facebook_url = trim(get_static_content('footer_content', 'facebook_url', 'text'
     <br>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-        <p class="h6">Copyright &copy <?= date('Y') ?> <a href="/">NDT-LAN</a></p>
+        <p class="h6">Copyright &copy; <?= date('Y') ?> <a href="/">NDT-LAN</a></p>
       </div>
     </div>
   </div>
 </footer>
 <?= get_codeinject_bodyclose() ?>
-<? global $edit_tools; ?>
 <?= $edit_tools ?? null ?>
