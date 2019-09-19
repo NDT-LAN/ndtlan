@@ -18,7 +18,7 @@ foreach ($seating->map as $y => $row) {
       });
 
       $reservation = array_find($reservations, function ($reservation) use ($x, $y) {
-        return $reservation->status === 'default' && $reservation->data->x == $x && $reservation->data->y == $y;
+        return $reservation->status === 'reservation' && $reservation->data->x == $x && $reservation->data->y == $y;
       });
 
       if ($signup) {
@@ -39,12 +39,7 @@ foreach ($seating->map as $y => $row) {
       if ($reservation) {
         if ($user && $reservation->customer_id == $user->id) {
           $seat->type = 'myreservation';
-        } else {
-          $customer = get_customer($reservation->customer_id);
-          $seat->type = 'taken';
-          if ($customer) {
-            $seat->label .= PHP_EOL . $customer['username'];
-          }
+          $seat->label .= PHP_EOL . $user->username;
         }
 
         continue;
