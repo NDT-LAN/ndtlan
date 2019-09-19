@@ -77,7 +77,7 @@ if ($countDownTarget) {
     <p><?= get_block_content('body') ?></p>
     <p class="lead">
       <? if ($linked_page) { ?>
-        <? if ($_mode && $_mode === 'edit') { ?>
+        <? if (isset($_mode) && $_mode === 'edit') { ?>
           <div class="btn btn-dark btn-lg" role="button">
             <?= get_block_content('button_label') ?>
           </div>

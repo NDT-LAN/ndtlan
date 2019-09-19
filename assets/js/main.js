@@ -1,6 +1,5 @@
 import 'bootstrap'
 import '../scss/main.scss'
-import $ from 'jquery'
 import Vue from 'vue'
 import dayjs from 'dayjs'
 
@@ -8,11 +7,13 @@ import startCountdown from './countdown'
 
 window.startCountdown = startCountdown
 
-window.$ = $
-window.jQuery = $
+let $ = window.$
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  let tooltips = $('[data-toggle="tooltip"]')
+  if (tooltips.length && tooltips.tooltip) {
+    $('[data-toggle="tooltip"]').tooltip()
+  }
 
   const date = new Date()
   date.setFullYear(date.getFullYear() - 13)
