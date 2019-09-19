@@ -131,7 +131,9 @@ NF::$capi->put('commerce/orders/' . $_SESSION['order_id'] . '/data', ['json' => 
   'data_alias' => 'seat_label',
   'type' => 'text',
   'label' => 'Plass',
-  'value' => $signup->data->Plass
+  'value' => NDT::getSeatMap()
+    ->map[$signup->data->y][$signup->data->x]
+    ->label
 ]]);
 
 $order = json_decode(
