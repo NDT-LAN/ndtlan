@@ -19,12 +19,16 @@ $author = $author ?? 'NDT-LAN';
     <a href="<?= $url ?>">
       <h2 class="card-title"><?= $title ?></h2>
     </a>
-    <? foreach ($tags as $tag) { ?>
-      <span class="badge badge-secondary">#<?= $tag ?></span>&nbsp;
-    <? } ?>
     <p class="card-text"><?= $intro ?></p>
   </div>
   <div class="card-footer">
-    Sist oppdatert <?= $updated ?> av <a href="#"><?= $author ?></a>
+    <? foreach ($tags as $tag) { ?>
+      <a href="?tag=<?=$tag ?>" class="badge badge-secondary p-2">
+        <?= $tag ?>
+      </a>
+    <? } ?>
+  </div>
+  <div class="card-footer">
+    Sist oppdatert <?= $updated ?> av <a href="profile/<?= $author ?>"><?= $author ?></a>
   </div>
 </div>
