@@ -7,15 +7,20 @@ import startCountdown from './countdown'
 
 window.startCountdown = startCountdown
 
-window.$(function () {
-  window.$('[data-toggle="tooltip"]').tooltip()
+let $ = window.$
+
+$(function () {
+  let tooltips = $('[data-toggle="tooltip"]')
+  if (tooltips.length && tooltips.tooltip) {
+    $('[data-toggle="tooltip"]').tooltip()
+  }
 
   const date = new Date()
   date.setFullYear(date.getFullYear() - 13)
   date.setMonth(0)
   date.setDate(1)
 
-  const datepickers = window.$('.datepicker')
+  const datepickers = $('.datepicker')
   if (datepickers && datepickers.datepicker) {
     datepickers.datepicker({
       isRTL: false,
@@ -352,7 +357,7 @@ window.initShop = el => {
 
         enableTooltips () {
           setTimeout(() => {
-            window.$('[data-toggle="tooltip"]')
+            $('[data-toggle="tooltip"]')
               .tooltip()
           }, 0)
         },
@@ -379,7 +384,7 @@ window.initShop = el => {
 
           await this.refreshSeatmap()
           setTimeout(() => {
-            window.$('.tooltip').tooltip('hide')
+            $('.tooltip').tooltip('hide')
           }, 0)
         },
 

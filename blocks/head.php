@@ -1,4 +1,6 @@
 <?php
+  global $_mode;
+
   $pagedata = [
     'url' => $page ? $page['url'] : null
   ];
