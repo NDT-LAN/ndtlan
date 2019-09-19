@@ -156,6 +156,18 @@ if ($saleAvailable) {
 <html lang="nb">
 <? get_block('head', ['og' => $og->toMetaTags()]) ?>
 <body <?= get_body_class() ?>>
+  <? if (!isset($_mode) && getenv('ENV') !== 'dev') { ?>
+    <script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+    <script>window.LogRocket && window.LogRocket.init('3hpt0l/ndt-lan');</script>
+    <? if ($user = NDT::currentUser()) { ?>
+      <script>
+        LogRocket.identify('<?= $user->id ?>', {
+          name: '<?= $user->firstname ?> <?= $user->surname ?>',
+          email: '<? $user->mail ?>'
+        });
+      </script>
+    <? } ?>
+  <? } ?>
   <? get_block('navbar') ?>
   <? if ($saleAvailable) { ?>
     <? if (!isset($order) || $order->status !== 'c') { ?>
