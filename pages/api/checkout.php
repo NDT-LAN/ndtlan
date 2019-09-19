@@ -99,6 +99,10 @@ if ($order->status !== 'p') {
 
 $callback = trim($checkoutData->callback, '/');
 
+if (getenv('ENV') !== 'dev') {
+  $callback = 'https://www.ndt-lan.no/billett';
+}
+
 $options = [
   'customer_email' => $order->customer_mail,
   'success_url' => $callback . '/' . $order->secret,
