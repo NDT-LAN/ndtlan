@@ -92,7 +92,7 @@ if ($saleAvailable) {
         )->signup_id;
 
         NF::$capi->delete('relations/signups/' . $signup->id);
-        $signup = NF::$capi->get('relations/signups/' . $signup_id);
+        $signup = json_decode(NF::$capi->get('relations/signups/' . $signup_id)->getBody());
 
         NF::$capi->post('commerce/orders/' . $order->id . '/payment', ['json' => [
           'status' => 'paid',
