@@ -43,7 +43,8 @@ foreach ($config->map as $y => $row) {
         }
       } else {
         $seat->type = 'taken';
-        $seat->label .= PHP_EOL . get_customer($signup->customer_id)['username'];
+        $seat->reserved = $signup->status === 'reservation';
+        $seat->label .= PHP_EOL . ($signup->status === 'reservation' ? '(reservert)' : (get_customer($signup->customer_id)['username']));
       }
     }
   }

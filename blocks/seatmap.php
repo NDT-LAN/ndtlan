@@ -10,6 +10,7 @@
         data-toggle="tooltip"
         :title="seat.label"
         :aria-label="getSeatAlt(seat)"
+        :style="`${ seat.reserved ? 'opacity: 0.5' : '' }`"
         @click="selectSeat(seat.x, seat.y)"
       ></button>
     </template>
