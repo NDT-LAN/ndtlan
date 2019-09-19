@@ -29,6 +29,6 @@ $author = $author ?? 'NDT-LAN';
     <? } ?>
   </div>
   <div class="card-footer">
-    Sist oppdatert <?= $updated ?> av <a href="profile/<?= $author ?>"><?= $author ?></a>
+    Sist oppdatert <?= $updated ?> av <a href="profil/<?= $author ?>"><?= $author ?></a>
   </div>
 </div>
