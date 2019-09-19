@@ -1,5 +1,7 @@
 <?php
 
+use Helpers\NDT;
+
 global $edit_tools;
 $contact_email = trim(get_static_content('footer_content', 'contact_email', 'text'));
 $facebook_url = trim(get_static_content('footer_content', 'facebook_url', 'text'));
@@ -41,3 +43,15 @@ $facebook_url = trim(get_static_content('footer_content', 'facebook_url', 'text'
 </footer>
 <?= get_codeinject_bodyclose() ?>
 <?= $edit_tools ?? null ?>
+<? if (!isset($mode) && getenv('ENV') !== 'dev') { ?>
+<script src="https://cdn.lr-ingest.io/LogRocket.min.js" crossorigin="anonymous"></script>
+<script>window.LogRocket && window.LogRocket.init('3hpt0l/ndt-lan');</script>
+<? if ($user = NDT::currentUser()) { ?>
+<script>
+  LogRocket.identify('<?= $user->id ?>', {
+    name: '<?= $user->firstname ?> <?= $user->surname ?>',
+    email: '<? $user->mail ?>'
+  });
+</script>
+<? } ?>
+<? } ?>
