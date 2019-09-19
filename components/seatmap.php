@@ -29,6 +29,7 @@ foreach ($seating->map as $y => $row) {
           $customer = get_customer($signup->customer_id);
           $seat->type = 'taken';
           if ($customer) {
+            $seat->label .= PHP_EOL . '(reservert)';
             $seat->label .= PHP_EOL . $customer['username'];
           }
         }
@@ -40,6 +41,10 @@ foreach ($seating->map as $y => $row) {
         if ($user && $reservation->customer_id == $user->id) {
           $seat->type = 'myreservation';
           $seat->label .= PHP_EOL . $user->username;
+        } else {
+          $seat->type = 'taken';
+          $seat->reserved = true;
+          $seat->label .= PHP_EOL . '(reservert)';
         }
 
         continue;
@@ -64,6 +69,7 @@ foreach ($seating->map as $y => $row) {
           data-toggle="tooltip"
           title="<?= $seat ? $seat->label : '' ?>"
           aria-label="<?= $seat ? $seat->label : '' ?>"
+          style="<?= (isset($seat->reserved) && $seat->reserved) ? 'opacity: 0.5' : '' ?>"
         ></button>
       <? } ?>
       </div>
