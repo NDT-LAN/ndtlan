@@ -34,12 +34,13 @@
       'banner' => $article->banner ? $article->banner->path : null,
       'updated' => $article->updated,
       'slug' => $article->url,
-      'author' => $article->author
+      'author' => $article->author,
+      'tags' => array_filter(explode(',', $article->tags))
     ];
   }, NF::search()
     ->directory(10000)
     ->where('published', true)
-    ->fields(['name','author', 'banner', 'intro', 'updated', 'url'])
+    ->fields(['name','author', 'banner', 'intro', 'updated', 'url', 'tags'])
     ->sortBy('id','desc')
     ->paginate($p - 1, $itemsPerPage)
     ->fetch());
