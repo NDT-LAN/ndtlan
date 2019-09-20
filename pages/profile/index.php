@@ -23,7 +23,22 @@ if (!isset($url_asset[1])) {
   }
 }
 
-$user->role = in_array(10002, $user->groups) ? 'Crew' : 'Deltager';
+$groups = json_decode(
+  NF::$capi->get('relations/customers/groups')
+    ->getBody()
+);
+
+usort($groups, function ($a, $b) {
+  return $b->id - $a->id;
+});
+
+$role = array_shift($groups);
+if ($role) {
+  $user->role = $role->name;
+} else {
+  $user->role = 'Gjester';
+}
+
 $user->member_for = Carbon::parse($user->created)->longAbsoluteDiffForHumans(Carbon::now());
 
 $previousEvents = json_decode(
