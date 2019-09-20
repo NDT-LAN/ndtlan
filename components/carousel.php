@@ -13,7 +13,7 @@ $carouselSettings = [
   'style' => $editStyle
 ];
 
-$slides = get_block_content_list($carouselSettings);
+$slides = NF::$site->content['carousel_images_' . $blockhash];
 ?>
 <?= set_edit_btn($carouselSettings) ?>
 <div id="<?= $blockhash ?>_carousel" class="carousel slide pb-3" data-ride="carousel">
@@ -25,7 +25,13 @@ $slides = get_block_content_list($carouselSettings);
     <? } else { ?>
       <? foreach ($slides as $i => $slide) { ?>
         <div class="carousel-item <?= !$i ? 'active' : '' ?>">
-          <img class="d-block w-100" src="<?= get_cdn_media($slide, '1200x300', 'rc') ?>" alt="Slide <?= ($i + 1) ?>">
+          <? if ($slide['title']) { ?>
+          <a href="<?= $slide['title'] ?>" target="_blank">
+          <? } ?>
+            <img class="d-block w-100" src="<?= get_cdn_media($slide['image'], '1200x300', 'rc') ?>" alt="Slide <?= ($i + 1) ?>">
+          <? if ($slide['title']) { ?>
+          </a>
+          <? } ?>
         </div>
       <? } ?>
     <? } ?>
