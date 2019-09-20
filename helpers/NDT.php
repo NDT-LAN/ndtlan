@@ -109,6 +109,22 @@ class NDT {
           $needsConsent = Carbon::now()->diffInYears($birthday) < 18;
         }
 
+        $groups = json_decode(
+          NF::$capi->get('relations/customers/groups')
+            ->getBody()
+        );
+
+        usort($groups, function ($a, $b) {
+          return $b->id - $a->id;
+        });
+
+        $role = array_shift($groups);
+        if ($role) {
+          $user->role = $role->name;
+        } else {
+          $user->role = 'Gjester';
+        }
+
         $user->needs_parental_consent = $needsConsent;
 
         return $user;
