@@ -1,3 +1,5 @@
-# Netflex Webpack Site Template
+# NDT-LAN website
 
-To get started, check out the [developer documentation](https://docs.netflex.dev)
+[![CircleCI](https://circleci.com/gh/NDT-LAN/ndtlan/tree/master.svg?style=svg)](https://circleci.com/gh/NDT-LAN/ndtlan/tree/master)
+
+[NDT-LAN](https://www.ndt-lan.no)
