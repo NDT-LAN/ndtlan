@@ -184,8 +184,13 @@ if ($saleAvailable) {
           </li>
         </ul>
         <br>
-        <button class="btn btn-secondary btn-block" @click="nextStep" :disabled="!formValidated">
-          {{ currentStep === 2 ? 'Fullfør' : 'Gå videre' }} <i class="fa fa-long-arrow-right"></i>
+        <button class="btn btn-secondary btn-block" @click="nextStep" :disabled="isBusy || !formValidated">
+          <template v-if="isBusy">
+            <i class="fa fa-spinner fa-spin"></i>
+          </template>
+          <template v-else>
+            {{ currentStep === 2 ? 'Fullfør' : 'Gå videre' }} <i class="fa fa-long-arrow-right"></i>
+          </template>
         </button>
         <div class="container bg-dark">
           <template v-if="currentStep === 0">
@@ -198,8 +203,13 @@ if ($saleAvailable) {
             <? get_block('checkout/payment') ?>
           </template>
         </div>
-        <button class="btn btn-secondary btn-block" @click="nextStep" :disabled="!formValidated">
-          {{ currentStep === 2 ? 'Fullfør' : 'Gå videre' }} <i class="fa fa-long-arrow-right"></i>
+        <button class="btn btn-secondary btn-block" @click="nextStep" :disabled="isBusy || !formValidated">
+          <template v-if="isBusy">
+            <i class="fa fa-spinner fa-spin"></i>
+          </template>
+          <template v-else>
+            {{ currentStep === 2 ? 'Fullfør' : 'Gå videre' }} <i class="fa fa-long-arrow-right"></i>
+          </template>
         </button>
       </div>
       <?php
