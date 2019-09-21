@@ -42,6 +42,7 @@ window.initShop = el => {
     return new Vue({
       el: shopEl,
       data: () => ({
+        isBusy: false,
         loaded: false,
         isRefreshing: false,
         discount: '',
@@ -308,6 +309,7 @@ window.initShop = el => {
         },
 
         async checkoutStripe () {
+          this.isBusy = true
           const root = new URL(window.location.href).origin
 
           const response = await window.fetch(`/api/v1/checkout`, {
@@ -331,6 +333,7 @@ window.initShop = el => {
         },
 
         async getOrder () {
+          this.isBusy = true
           const response = await window.fetch(`/api/v1/order`, {
             method: 'GET',
             credentials: 'include'
@@ -338,6 +341,7 @@ window.initShop = el => {
 
           const data = await response.json()
           this.order = data
+          this.isBusy = false
         },
 
         switchTab (i) {
@@ -376,15 +380,25 @@ window.initShop = el => {
         },
 
         async reserve (x, y) {
-          await window.fetch(`/api/v1/reserve?ticket=${this.ticketType}&x=${x}&y=${y}`, {
-            method: 'GET',
-            credentials: 'include'
-          })
+          if (!this.isBusy) {
+            this.isBusy = true
 
-          await this.refreshSeatmap()
-          setTimeout(() => {
-            $('.tooltip').tooltip('hide')
-          }, 0)
+            $('.ndt-seat').prop('disabled', true)
+
+            await window.fetch(`/api/v1/reserve?ticket=${this.ticketType}&x=${x}&y=${y}`, {
+              method: 'GET',
+              credentials: 'include'
+            })
+
+            await this.refreshSeatmap()
+
+            this.isBusy = false
+            $('.ndt-seat').prop('disabled', false)
+
+            setTimeout(() => {
+              $('.tooltip').tooltip('hide')
+            }, 0)
+          }
         },
 
         async getTicketTypes () {

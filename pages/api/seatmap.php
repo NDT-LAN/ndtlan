@@ -71,6 +71,7 @@ header('Content-Type: application/json');
 die(json_encode([
   'width' => $config->width,
   'height' => $config->height,
+  'reservation' => $config->reservation,
   'availableSeats' => $config->availableSeats,
   'bookedSeats' => $config->bookedSeats,
   'totalSeats' => $config->totalSeats,
