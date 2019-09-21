@@ -6,6 +6,7 @@
     ->fetch();
 
   shuffle($sponsors);
+  $sponsors = array_values($sponsors);
 ?>
 <? if (count($sponsors)) { ?>
 <div id="<?= $blockhash ?>_carousel" class="carousel slide pb-3" data-ride="carousel">
