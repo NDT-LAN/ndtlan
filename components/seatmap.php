@@ -68,7 +68,7 @@ foreach ($seating->map as $y => $row) {
 
 ?>
 <?= set_edit_btn($refreshSettings) ?>
-<div class="d-flex flex-column pt-3">
+<div class="d-flex flex-column pt-3 bg-dark">
   <? get_block('seating_explanation') ?>
   <div class="container ndt-seating-container p-4">
     <? foreach ($seating->map as $i => $row) { ?>
