@@ -2,7 +2,7 @@
   use Helpers\NDT;
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once('extensions/print_template.php');
+    generate_pdf('https://ndt-lan.no/api/v1/print?event=' . $_POST['event']);
     die();
   } else {
     $currentEvent = NDT::currentEvent();
