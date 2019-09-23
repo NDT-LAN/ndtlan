@@ -13,6 +13,5 @@
   "profil/glemt-passord/": "pages/profile/password_reset.php",
   "profil/billetter/kvittering/": "pages/profile/receipt.php",
   "profil/billetter/": "pages/profile/tickets.php",
-  "profil/": "pages/profile/index.php",
-  "api/v1/print/": "pages/api/print.php"
+  "profil/": "pages/profile/index.php"
 }

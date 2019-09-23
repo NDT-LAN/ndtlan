@@ -1,5 +1,5 @@
 <?php
-  $event = get_directory_entry($_GET['event']);
+  $event = get_directory_entry($_POST['event']);
   $signups = NF::search()
     ->relation('signup')
     ->where('entry_id', $event['id'])

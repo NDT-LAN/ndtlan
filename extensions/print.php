@@ -1,8 +1,8 @@
 <?php
   use Helpers\NDT;
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    generate_pdf('https://ndt-lan.no/api/v1/print?event=' . $_POST['event']);
+  if (isset($_POST['event'])) {
+    require_once('extensions/print_template.php');
     die();
   } else {
     $currentEvent = NDT::currentEvent();
