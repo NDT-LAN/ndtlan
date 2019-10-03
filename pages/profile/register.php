@@ -40,6 +40,12 @@
       unset($payload['password-repeat']);
     }
 
+    if (!preg_match('/^[0-9]{4}$/', $payload['zip'])) {
+      $errors['zip'] = 'Postnummer er ugyldig (skal kun være tall)';
+    } else {
+      $payload['zip'] = trim($payload['zip']);
+    }
+
     $payload['birthday'] = Carbon::createFromFormat('d.m.Y', $payload['birthday'])
       ->startOfDay()
       ->toDateTimeString();
