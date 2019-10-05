@@ -7,7 +7,8 @@
     "larapack/dd": "^1.1",
     "nesbot/carbon": "^2.24",
     "stripe/stripe-php": "^7.1",
-    "simplesoftwareio/simple-qrcode": "^2.0"
+    "simplesoftwareio/simple-qrcode": "^2.0",
+    "laulamanapps/izettle-api": "^0.9.3"
   },
   "autoload": {
     "psr-4": {
