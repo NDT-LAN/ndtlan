@@ -17,4 +17,3 @@ composer.lock
 composer.json
 config/api.json
 webpack.config.js
-extensions
