@@ -167,7 +167,7 @@ $forbiddenProducts = json_decode(get_setting('izettle_excluded_products'));
   <script>
     $(document).ready(function () {
       $('.Kiosk').slick({
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 5000
       })
     })
