@@ -29,12 +29,12 @@
       $field = 'mail';
     }
 
-    $users = NF::search()
-      ->relation('customer')
-      ->where($field, $username)
-      ->fetch();
+    $response = NF::$capi->get('search?relation=customer&q='.$field.':'.$username)
+      ->getBody();
 
-    $user = array_shift($users);
+    $users = json_decode($response);
+
+    $user = array_shift($users->data);
 
     if ($user) {
       NF::$capi->post('relations/notifications', ['json' => [
