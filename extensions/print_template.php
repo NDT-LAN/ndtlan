@@ -45,16 +45,32 @@
       justify-content: center;
       align-items: center;
     }
+
+    .event {
+      font-size: 4rem;
+    }
+
+    .seating {
+      font-size: 5rem;
+    }
+
+    .user {
+      font-size: 2rem;
+    }
+
+    .info {
+      font-size: 1.75rem;
+    }
   </style>
   <? foreach ($signups as $signup) { ?>
     <? $customer = get_customer($signup->customer_id); ?>
     <div class="page">
-      <img src="<?= get_cdn_media('1568748342/mail-logo.png', '256x256', 'rc') ?>">
-      <h2><?= $event['name'] ?></h2>
+      <img src="<?= get_cdn_media('1568748342/mail-logo.png', '320x320', 'rc') ?>">
+      <h1 class="event"><?= $event['name'] ?></h1>
       <hr>
-      <h1><?= $signup->data->Plass ?></h1>
-      <h2><?= $customer['username'] ?></h2>
-      <p>
+      <h2 class="seating"><?= $signup->data->Plass ?></h2>
+      <h3 class="user"><?= ucfirst($customer['firstname']) ?> "<?= $customer['username'] ?>" <?= ucfirst($customer['surname']) ?></h3>
+      <p class="info">
         www.ndt-lan.no
       </p>
     </div>
