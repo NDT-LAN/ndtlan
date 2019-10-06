@@ -170,6 +170,10 @@ $forbiddenProducts = json_decode(get_setting('izettle_excluded_products'));
         autoplay: true,
         autoplaySpeed: 5000
       })
+
+      setTimeout(function () {
+        window.location.reload()
+      }, 60 * 1000 * 5)
     })
   </script>
 </body>
