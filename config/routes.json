@@ -8,6 +8,7 @@
   "api/v1/reservation_delete/": "pages/api/delete_reservation.php",
   "api/v1/discount/": "pages/api/add_discount.php",
   "api/v1/qrcode/": "pages/api/qrcode.php",
+  "api/v1/documents/receipt/": "pages/api/resend_receipt.php",
   "logout/": "pages/logout.php",
   "profil/registrer/": "pages/profile/register.php",
   "profil/glemt-passord/": "pages/profile/password_reset.php",
