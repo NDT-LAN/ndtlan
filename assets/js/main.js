@@ -419,16 +419,18 @@ window.initShop = el => {
           this.seating = config
           let reservation = null
           for (let row of this.seating.map) {
-            for (let seat of row) {
-              if (seat) {
-                if (seat.type === 'myreservation') {
-                  reservation = [seat.x, seat.y]
-                  break
+            if (row) {
+              for (let seat of row) {
+                if (seat) {
+                  if (seat.type === 'myreservation') {
+                    reservation = [seat.x, seat.y]
+                    break
+                  }
                 }
               }
-            }
-            if (reservation) {
-              break
+              if (reservation) {
+                break
+              }
             }
           }
 
