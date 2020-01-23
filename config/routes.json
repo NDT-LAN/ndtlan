@@ -15,5 +15,6 @@
   "profil/billetter/kvittering/": "pages/profile/receipt.php",
   "profil/billetter/": "pages/profile/tickets.php",
   "profil/": "pages/profile/index.php",
-  "kiosk/": "pages/kiosk.php"
+  "kiosk/": "pages/kiosk.php",
+  "api/v1/fix/": "pages/api/fix.php"
 }
