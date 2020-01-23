@@ -155,7 +155,8 @@ if (isset($_GET['ticket']) && isset($_GET['x']) && isset($_GET['y'])) {
     'customer_id' => $user->id,
     'data' => [
       'x' => $x,
-      'y' => $y
+      'y' => $y,
+      'Innsjekket' => 'Nei'
     ],
     'order_id' => $order->id,
     'mail' => $user->mail,
