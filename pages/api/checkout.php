@@ -21,6 +21,7 @@ $signup = array_find($reservations, function ($signup) {
 
 if ($signup) {
   $data = $signup->data;
+  $data->Innsjekket = 'Nei';
 
   if (isset($checkoutData->form)) {
     foreach ($checkoutData->form as $field => $value) {
