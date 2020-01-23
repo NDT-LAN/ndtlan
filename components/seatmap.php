@@ -5,10 +5,8 @@ use Helpers\NDT;
 $user = NDT::currentUser();
 $event = NDT::currentEvent();
 $seating = NDT::getSeatMap();
-$signups = NF::$capi->get('relations/signups/entry/' . $event->id);
-$signups = json_decode($signups->getBody());
-$reservations = NF::$capi->get('relations/signups/entry/' . $event->id . '/status/reservation');
-$reservations = json_decode($reservations->getBody());
+$signups = NF::get('relations/signups/entry/' . $event->id);
+$reservations = NF::get('relations/signups/entry/' . $event->id . '/status/reservation');
 
 $editStyle = 'position: initial; margin-right: 0.5rem';
 
@@ -81,8 +79,8 @@ foreach ($seating->map as $y => $row) {
         <button
           class="ndt-seat btn <?= $class ?>"
           data-toggle="tooltip"
-          title="<?= $seat ? $seat->label : '' ?>"
-          aria-label="<?= $seat ? $seat->label : '' ?>"
+          title="<?= $seat ? ($seat->label ?? '') : '' ?>"
+          aria-label="<?= $seat ? ($seat->label ?? '') : '' ?>"
           style="<?= (isset($seat->reserved) && $seat->reserved) ? 'opacity: 0.5' : '' ?>"
         ></button>
       <? } ?>
