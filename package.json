@@ -12,7 +12,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-lightbox": "^0.4.1",
     "dayjs": "^1.8.16",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "popper.js": "^1.15.0",
     "vue": "^2.6.10"
   },
