@@ -114,6 +114,12 @@ a {
     pointer-events: initial;
     background: $seat-seat;
   }
+  
+  &--covid {
+    &:before {
+      content: "\e074";
+    }
+  }
 
   &--taken {
     pointer-events: initial;
