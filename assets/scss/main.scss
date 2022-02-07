@@ -114,6 +114,10 @@ a {
     pointer-events: initial;
     background: $seat-seat;
   }
+  
+  &--covid {
+    background: $seat-info;
+  }
 
   &--taken {
     pointer-events: initial;
