@@ -116,9 +116,7 @@ a {
   }
   
   &--covid {
-    &:before {
-      content: "\e074";
-    }
+    background: $seat-info;
   }
 
   &--taken {

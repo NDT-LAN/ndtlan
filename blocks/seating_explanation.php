@@ -22,7 +22,7 @@ $user = NDT::currentUser();
     </li>
     <? if (get_setting('covid_seating')) { ?>
       <li class="list-inline-item">
-        <button class="ndt-seat btn ndt-seat--info ndt-seat--covid">&nbsp;</button> Utilgjengelig pga. smittevernstiltak
+        <button class="ndt-seat btn ndt-seat--covid">&nbsp;</button> Utilgjengelig pga. smittevernstiltak
       </li>
     <? } ?>
     <!-- <li class="list-inline-item">
