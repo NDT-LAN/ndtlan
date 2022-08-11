@@ -26,31 +26,31 @@ $url = $url === 'index/' ? '/' : $url;
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
         <? if ($user = NDT::currentUser()) { ?>
-        <li class="nav-item">
-          <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user"></i>&nbsp; <?= $user->username ?>
-            </a>
+          <li class="nav-item">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user"></i>&nbsp; <?= $user->username ?>
+              </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-              <!-- <a class="dropdown-item" href="/profil">
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <!-- <a class="dropdown-item" href="/profil">
                 <i class="fa fa-gear"></i>&nbsp; <?= get_label('Min profil', 'nb') ?>
               </a> -->
-              <a class="dropdown-item" href="/profil/glemt-passord/<?= NDT::createToken($user->id) ?>">
-                <i class="fa fa-key"></i>&nbsp; <?= get_label('Endre passord', 'nb') ?>
-              </a>
-              <a class="dropdown-item" href="/profil/billetter">
-                <i class="fa fa-ticket"></i>&nbsp; <?= get_label('Mine billetter', 'nb') ?>
-              </a>
-              <a class="dropdown-item" href="/logout">
-                <i class="fa fa-sign-out"></i>&nbsp; <?= get_label('Logg ut', 'nb') ?>
-              </a>
+                <a class="dropdown-item" href="/profil/glemt-passord/<?= NDT::createToken($user->id) ?>">
+                  <i class="fa fa-key"></i>&nbsp; <?= get_label('Endre passord', 'nb') ?>
+                </a>
+                <a class="dropdown-item" href="/profil/billetter">
+                  <i class="fa fa-ticket"></i>&nbsp; <?= get_label('Mine billetter', 'nb') ?>
+                </a>
+                <a class="dropdown-item" href="/logout">
+                  <i class="fa fa-sign-out"></i>&nbsp; <?= get_label('Logg ut', 'nb') ?>
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
         <? } else { ?>
           <li class="nav-item">
-            <a class="btn btn-secondary" href="/login?redirect=<?= $url ?>">
+            <a class="btn btn-secondary" href="/profil/login?redirect=<?= $url ?>">
               <i class="fa fa-lock"></i>&nbsp; <?= get_label('Logg inn', 'nb') ?>
             </a>
           </li>

@@ -6,8 +6,10 @@ use NF;
 use Exception;
 use Carbon\Carbon;
 
-class NDT {
-  public static function currentEvent () {
+class NDT
+{
+  public static function currentEvent()
+  {
     $results = NF::search()
       ->directory(10002)
       ->equals('published', 1)
@@ -17,7 +19,8 @@ class NDT {
     return array_shift($results);
   }
 
-  public static function getStripePK () {
+  public static function getStripePK()
+  {
     $apiKey = 'stripe_live_public_key';
 
     if (getenv('ENV') === 'dev') {
@@ -27,7 +30,8 @@ class NDT {
     return get_setting($apiKey);
   }
 
-  public static function getStripeSK () {
+  public static function getStripeSK()
+  {
     $apiKey = 'stripe_live_private_key';
 
     if (getenv('ENV') === 'dev') {
@@ -37,7 +41,8 @@ class NDT {
     return get_setting($apiKey);
   }
 
-  public static function getEvent ($id) {
+  public static function getEvent($id)
+  {
     $results = NF::search()
       ->directory(10002)
       ->equals('published', 1)
@@ -47,22 +52,25 @@ class NDT {
     return array_shift($results);
   }
 
-  public static function getSeatMap () {
+  public static function getSeatMap()
+  {
     return json_decode(get_setting('event_config'));
   }
 
-  public static function guard ($redirect = '/') {
+  public static function guard($redirect = '/')
+  {
     global $_mode;
 
     if (!isset($_mode)) {
       if (!static::currentUser()) {
-        header('Location: /login?redirect=' . $redirect);
+        header('Location: /profil/login?redirect=' . $redirect);
         die();
       }
     }
   }
 
-  public static function createToken ($value) {
+  public static function createToken($value)
+  {
     $encrypt_method = 'AES-256-CBC';
     $secret_key = get_setting('netflex_api');
     $secret_iv = time();
@@ -70,10 +78,11 @@ class NDT {
     $iv = substr(hash('sha256', $secret_iv), 0, 16);
     $output = openssl_encrypt($value, $encrypt_method, $key, 0, $iv);
 
-    return base64_encode(json_encode(['value' => $output, 'iv' => $iv, ]));
+    return base64_encode(json_encode(['value' => $output, 'iv' => $iv,]));
   }
 
-  public static function parseToken ($token) {
+  public static function parseToken($token)
+  {
     try {
       $encrypt_method = 'AES-256-CBC';
       $secret_key = get_setting('netflex_api');
@@ -91,7 +100,8 @@ class NDT {
     }
   }
 
-  public static function currentUser () {
+  public static function currentUser()
+  {
     if (isset($_SESSION['netflex_siteuser'])) {
       $user = json_decode(
         json_encode(
