@@ -1,42 +1,43 @@
 <?php
 
-  use Helpers\NDT;
+use Helpers\NDT;
 
-  $error = false;
-  $success = false;
+$error = false;
+$success = false;
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($userid) && isset($_POST['password']) && isset($_POST['password-repeat'])) {
-      if ($_POST['password'] === $_POST['password-repeat']) {
-        if (strlen($_POST['password']) >= 6) {
-          try {
-            NF::$capi->put('relations/customers/auth/force/' . $userid, ['json' => [
-              'password' => $_POST['password']
-            ]]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($userid) && isset($_POST['password']) && isset($_POST['password-repeat'])) {
+    if ($_POST['password'] === $_POST['password-repeat']) {
+      if (strlen($_POST['password']) >= 6) {
+        try {
+          NF::$capi->put('relations/customers/auth/force/' . $userid, ['json' => [
+            'password' => $_POST['password']
+          ]]);
 
-            $success = true;
-            $error = false;
-          } catch (Exception $ex) {
-            $error = 'Det oppstod en intern feil. Vennligst prøv igjen';
-          }
-        } else {
-          $error = 'Passordet må være minst 6 tegn.';
+          $success = true;
+          $error = false;
+        } catch (Exception $ex) {
+          $error = 'Det oppstod en intern feil. Vennligst prøv igjen';
         }
       } else {
-        $error = 'Passordene stemmer ikke overens.';
+        $error = 'Passordet må være minst 6 tegn.';
       }
     } else {
       $error = 'Passordene stemmer ikke overens.';
     }
-
-    if ($error !== false) {
-      $success === false;
-    }
+  } else {
+    $error = 'Passordene stemmer ikke overens.';
   }
+
+  if ($error !== false) {
+    $success === false;
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="nb">
 <? get_block('head') ?>
+
 <body <?= get_body_class() ?>>
   <? get_block('navbar') ?>
   <div class="container login-container">
@@ -47,37 +48,16 @@
         <div class="alert alert-success mt-3" role="alert">
           Ditt passord har blitt endret.<br>
         </div>
-        <a class="btn btn-secondary btn-block mt-3" href="/login">Trykk her for å logge inn</a>
+        <a class="btn btn-secondary btn-block mt-3" href="/profil/login">Trykk her for å logge inn</a>
       <? } else { ?>
-        <label
-          for="password"
-          class="sr-only"
-        >
+        <label for="password" class="sr-only">
           Nytt passord
         </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          class="form-control"
-          placeholder="Nytt password"
-          required
-          autofocus
-        >
-        <label
-          for="password-repeat"
-          class="sr-only"
-        >
+        <input id="password" name="password" type="password" class="form-control" placeholder="Nytt password" required autofocus>
+        <label for="password-repeat" class="sr-only">
           Gjenta passord
         </label>
-        <input
-          id="password-repeat"
-          name="password-repeat"
-          type="password"
-          class="form-control"
-          placeholder="Gjenta passord"
-          required
-        >
+        <input id="password-repeat" name="password-repeat" type="password" class="form-control" placeholder="Gjenta passord" required>
 
         <? if ($error) { ?>
           <br>
@@ -86,10 +66,7 @@
           </div>
         <? } ?>
 
-        <button
-          class="btn btn-lg btn-secondary btn-block"
-          type="submit"
-        >
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">
           Endre passord
         </button>
       <? } ?>
@@ -97,4 +74,5 @@
   </div>
   <? get_block('footer') ?>
 </body>
+
 </html>
